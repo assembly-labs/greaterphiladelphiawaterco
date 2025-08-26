@@ -1,0 +1,206 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Greater Philadelphia Water Co. - Locally tapped and canned water with pride.">
+  <meta name="keywords" content="local water, Philadelphia, sustainable, canned water">
+  <meta property="og:title" content="Greater Philadelphia Water Co.">
+  <meta property="og:description" content="Join the revolution with locally sourced water.">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <title>Greater Philadelphia Water Co.</title>
+</head>
+<body>
+  <main role="main" class="page">
+    <section id="hero" class="section section--hero">
+      <div class="container hero__wrap">
+        <h1 class="hero__title">
+          It’s not just water.<br>
+          It’s local,<br>
+          made for locals.
+        </h1>
+        <p class="hero__subhead">Tapped here. Canned here. For here.</p>
+        <div class="cta__group" role="group" aria-label="Primary actions">
+          <a class="btn btn--primary" href="mailto:drew@assemblylabs.co" aria-label="Stock It First">Stock It First</a>
+          <a class="btn btn--primary" href="mailto:drew@assemblylabs.co" aria-label="Invest Early">Invest Early</a>
+        </div>
+      </div>
+    </section>
+
+    <footer id="footer" class="footer">
+      <div class="container">
+        <p class="footer__tagline">Made with Brotherly Love. &#10084;&#65039;</p>
+      </div>
+    </footer>
+  </main>
+
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #1a1a1a;
+      color: #fff;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* Hero Section */
+    .section--hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
+      padding: 2rem 0;
+    }
+    .hero__wrap {
+      max-width: 800px;
+    }
+    .hero__title {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      text-align: left;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+    .hero__subhead {
+      font-size: clamp(1.25rem, 3vw, 1.5rem);
+      font-weight: 400;
+      text-align: left;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+    .cta__group {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+    .btn--primary {
+      background: #007bff;
+      color: #fff;
+    }
+    .btn:hover, .btn:focus {
+      transform: scale(1.05);
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+    .btn--primary:hover {
+      background: #005bb5;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 2rem 0;
+      background: #111;
+      text-align: center;
+    }
+    .footer__tagline {
+      font-size: 1rem;
+      opacity: 0.8;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero__title {
+        font-size: clamp(2rem, 5vw, 3rem);
+      }
+      .hero__subhead {
+        font-size: clamp(1rem, 2.5vw, 1.25rem);
+      }
+      .cta__group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      .btn {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+      }
+    }
+  </style>
+
+  <script>
+    // Smooth scrolling for hash links (for future use)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Button click feedback
+    document.querySelectorAll('.btn').forEach(button => {
+      button.addEventListener('click', function() {
+        this.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          this.style.transform = 'scale(1)';
+        }, 100);
+      });
+    });
+  </script>
+</body>
+</html>
