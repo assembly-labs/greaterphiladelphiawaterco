@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greater Philadelphia Water Co. - Investment Opportunities</title>
+    <style>
+        :root {
+            --primary-blue: #1e40af;
+            --secondary-blue: #3b82f6;
+            --accent-blue: #93c5fd;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --bg-dark: #0a0a0a;
+            --bg-card: #1a1a1a;
+            --bg-card-hover: #252525;
+            --border-color: #333;
+            --shadow-color: rgba(30, 64, 175, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #111 100%);
+            color: var(--text-primary);
+            line-height: 1.7;
+            padding: 20px;
+            text-align: center;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(30, 64, 175, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(147, 197, 253, 0.02) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(30, 64, 175, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        h1 {
+            font-size: 3.2em;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: fadeIn 1s ease-in-out;
+            text-shadow: 0 0 30px rgba(30, 64, 175, 0.3);
+        }
+
+        h2 {
+            font-size: 2.2em;
+            color: var(--primary-blue);
+            font-weight: 700;
+            margin: 40px 0 20px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-blue));
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(30, 64, 175, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.6em;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            animation: slideUp 1s ease-in-out;
+            font-weight: 300;
+        }
+
+        .separator {
+            font-size: 2.5em;
+            color: var(--primary-blue);
+            margin: 50px 0;
+            font-weight: 100;
+            opacity: 0.6;
+        }
+
+        p {
+            max-width: 900px;
+            margin: 15px auto;
+            font-size: 1.1em;
+            text-align: left;
+            padding: 0 15px;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        p:hover {
+            transform: translateX(5px);
+            color: var(--text-primary);
+        }
+
+        ul {
+            max-width: 900px;
+            margin: 20px auto;
+            text-align: left;
+            list-style-type: none;
+            padding-left: 30px;
+        }
+
+        ul li {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 30px;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        ul li:hover {
+            color: var(--text-primary);
+            transform: translateX(5px);
+        }
+
+        ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        .subheading {
+            font-weight: 700;
+            font-size: 1.5em;
+            margin: 35px 0 20px;
+            text-align: left;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--primary-blue);
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .subheading::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-blue), var(--accent-blue));
+            border-radius: 2px;
+        }
+
+        .call-to-action {
+            font-style: italic;
+            font-weight: 600;
+            color: var(--bg-dark);
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+            padding: 15px 30px;
+            border-radius: 30px;
+            display: inline-block;
+            margin: 30px auto;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px var(--shadow-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9em;
+        }
+
+        .call-to-action:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 30px rgba(30, 64, 175, 0.3);
+        }
+
+        .section {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            margin: 30px auto;
+            max-width: 950px;
+            border-radius: 20px;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-blue), var(--primary-blue));
+            background-size: 200% 100%;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        .section:hover {
+            transform: translateY(-8px);
+            background: var(--bg-card-hover);
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(30, 64, 175, 0.1);
+        }
+
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(-30px) scale(0.9); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-blue);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-blue);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 2.5em;
+                letter-spacing: 1px;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            .subtitle {
+                font-size: 1.3em;
+            }
+            p, ul li {
+                font-size: 1em;
+            }
+            .section {
+                padding: 25px;
+                margin: 20px auto;
+                border-radius: 15px;
+            }
+            .subheading {
+                font-size: 1.3em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2em;
+            }
+            .section {
+                padding: 20px;
+            }
+            p, ul li {
+                text-align: left;
+            }
+        }
+
+        /* Add subtle glow effects */
+        .section:hover h2 {
+            text-shadow: 0 0 20px rgba(30, 64, 175, 0.3);
+        }
+
+        /* Enhanced focus states for accessibility */
+        .section:focus-within {
+            outline: 2px solid var(--primary-blue);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Greater Philadelphia Water Co.</h1>
+    <p class="subtitle">Local water for local people who were crazy enough to fight an empire</p>
+    <p class="separator">⸻</p>
+
+    <div class="section">
+        <h2>For Financial Advisors & Wealth Management Professionals</h2>
+        <p class="subheading">Executive Investment Summary</p>
+        <ul>
+            <li>Asset Class: Consumer Staples - Beverages</li>
+            <li>Investment Structure: Multi-tiered community ownership model</li>
+            <li>Target IRR: 28-45% across investment vehicles</li>
+            <li>Market Opportunity: $1.96-2.45B regional market, 6.7% CAGR</li>
+            <li>Unique Advantages: Municipal beverage tax exemption, 42% bottled water usage rate, established CDFI ecosystem</li>
+        </ul>
+
+        <p class="subheading">Professional Investment Structures Available</p>
+        <p class="subheading">Regulation CF Crowdfunding (Optimal for HNW Client Diversification)</p>
+        <ul>
+            <li>Capital Raise Capacity: Up to $5M annually per SEC regulations</li>
+            <li>Client Investment Limits: $2,200 for clients &lt;$107K income, higher limits for qualified investors</li>
+            <li>Liquidity Profile: Illiquid investment with 12-month holding period minimum</li>
+            <li>Governance Rights: Non-voting preferred shares, no board representation required</li>
+            <li>Expected Returns: 20-45% IRR based on revenue growth projections</li>
+            <li>Risk Mitigation: Local market monopolization strategy, regulatory barriers to entry</li>
+        </ul>
+
+        <p class="subheading">Revenue-Share Agreements (Fixed-Income Alternative)</p>
+        <ul>
+            <li>Structure: 2-8% of gross monthly revenues until 1.3x-3x multiple achieved</li>
+            <li>Duration: Typically 3-7 years based on growth trajectory</li>
+            <li>Target Returns: 15-35% IRR with quarterly distributions</li>
+            <li>Credit Enhancement: First lien on receivables, personal guarantees available</li>
+            <li>Comparison: Higher yield than municipal bonds with similar duration</li>
+            <li>Tax Treatment: Ordinary income for distributions, potential capital gains at exit</li>
+        </ul>
+
+        <p class="subheading">Community Investment Trust Participation</p>
+        <ul>
+            <li>Minimum Investment: $25,000 through qualified CDFIs</li>
+            <li>Expected Returns: 8-15% annually with impact measurement</li>
+            <li>Geographic Focus: Philadelphia Opportunity Zones for capital gains benefits</li>
+            <li>Risk Profile: Moderate risk with community development backing</li>
+            <li>Liquidity: 5-7 year hold with potential secondary market</li>
+        </ul>
+
+        <p class="subheading">Financial Performance Projections</p>
+        <p class="subheading">Revenue Model Validation:</p>
+        <ul>
+            <li>40-65% gross margins (industry standard for premium positioning)</li>
+            <li>Break-even at 75,000 cases monthly (achieved within 18-24 months)</li>
+            <li>Customer acquisition cost under $15 vs. $45+ LTV</li>
+            <li>Market capture target: 2.3% of regional bottled water consumption</li>
+        </ul>
+
+        <p class="subheading">Balance Sheet Strength:</p>
+        <ul>
+            <li>Asset-light model with co-packing relationships</li>
+            <li>Aluminum packaging with 68% local recycling rate alignment</li>
+            <li>Zero transportation costs compared to 85% reduction vs. Colorado-sourced competitors</li>
+            <li>Municipal tax exemption provides 1.5¢ per ounce cost advantage</li>
+        </ul>
+
+        <p class="subheading">Capital Requirements by Stage:</p>
+        <ul>
+            <li>Seed Round: $350K (18-month runway)</li>
+            <li>Series A: $2.1M (market expansion, co-packer partnerships)</li>
+            <li>Series B: $8.5M (facility acquisition, distribution scaling)</li>
+        </ul>
+
+        <p class="subheading">Risk Assessment & Mitigation</p>
+        <ul>
+            <li>Market Risks: Local market concentration offset by customer loyalty and barrier advantages</li>
+            <li>Regulatory Risks: Minimal—bottled water exempt from Philadelphia beverage tax</li>
+            <li>Competitive Risks: First-mover advantage in authentic local positioning</li>
+            <li>Operational Risks: Co-packing relationships reduce capital intensity and execution risk</li>
+        </ul>
+        <p>Due Diligence Package Available: Includes audited financials, market research validation, regulatory compliance documentation, and community impact assessment.</p>
+
+        <p class="subheading">Client Suitability Guidelines</p>
+        <p>Appropriate for:</p>
+        <ul>
+            <li>HNW clients seeking alternative investments with community impact</li>
+            <li>Philadelphia-area clients with local market knowledge</li>
+            <li>Portfolios allocating 5-15% to private equity/alternatives</li>
+            <li>Impact-focused mandates combining returns with community development</li>
+            <li>Clients interested in ESG alignment with measurable local impact</li>
+        </ul>
+        <p>Risk Disclosure: Private placement investment with illiquidity, concentration risk, and early-stage company volatility. Suitable only for accredited investors who can afford total loss.</p>
+    </div>
+
+    <p class="separator">⸻</p>
+
+    <div class="section">
+        <h2>For Our Philadelphia Community</h2>
+        <p class="subheading">Real Talk: Why We're Doing This</p>
+        <p>We tap clean water right here in Greater Philadelphia and can it right here too. No shipping from mountains 3,000 miles away, no exploiting distant communities, no corporate nonsense. Just honest water from honest people who've been making things since before your great-great-grandfather was born.</p>
+        <p class="call-to-action">Founded by Quakers, but we'll still fight anyone who says our water isn't the best.</p>
+
+        <p class="subheading">How You Can Own a Piece</p>
+        <p class="subheading">Community Crowdfunding - Starting at $200</p>
+        <p>You can buy shares right through our website. Same way you'd invest in any company, except this one's actually from here and staying here. Your neighbor works here. Your kids go to school with our kids. When we do well, you do well. That's how it should be.</p>
+        <p>What you get:</p>
+        <ul>
+            <li>Actual ownership in a real Philadelphia company</li>
+            <li>Quarterly updates on how we're doing (the real numbers, not corporate speak)</li>
+            <li>First dibs on new products and company events</li>
+            <li>The satisfaction of telling outsiders your water company is locally owned</li>
+        </ul>
+
+        <p class="subheading">Revenue Sharing - For the Doubters</p>
+        <p>Not ready to buy shares? We get it. You can lend us money and we'll pay you back with interest as we grow. Think of it like lending money to your cousin's business, except with paperwork and better returns.</p>
+        <p>How it works:</p>
+        <ul>
+            <li>You lend us money</li>
+            <li>We pay you back a percentage of what we make each month</li>
+            <li>Keep getting paid until you've made 30-200% on your money</li>
+            <li>Usually takes 3-5 years depending on how fast we grow</li>
+        </ul>
+
+        <p class="subheading">Buy Local, Own Local</p>
+        <p>Every case you buy, every neighbor you tell, every time you choose us over the corporate stuff—that's an investment in our community. When you own shares, buying our water puts money back in your own pocket.</p>
+
+        <p class="subheading">Why This Actually Makes Sense</p>
+        <p>Our Advantages (No Corporate BS):</p>
+        <ul>
+            <li>No beverage tax: Philadelphia taxes sodas but not pure water. We save 1.5¢ per ounce compared to other local drinks</li>
+            <li>No shipping costs: While other brands truck water from Colorado to Philly (because that makes total sense), we're already here</li>
+            <li>Local loyalty: 42% of Philadelphia households buy bottled water. Most of it's shipped from somewhere else. We're the obvious choice once people know we exist</li>
+            <li>Aluminum cans: Philadelphia recycles 68% of aluminum. Our packaging matches how our city already works</li>
+        </ul>
+
+        <p>The Numbers (Keep It Real):</p>
+        <ul>
+            <li>Market size: $2 billion worth of water gets sold in our region every year</li>
+            <li>Our target: Capture 2.3% of that market (which is completely doable)</li>
+            <li>Break-even: 75,000 cases per month (we're building toward that)</li>
+            <li>Profit margins: 35-56% once we hit our stride (that's good in any business)</li>
+        </ul>
+
+        <p class="subheading">What Your Investment Actually Buys</p>
+        <p>Phase 1 - Getting Started ($350K):</p>
+        <ul>
+            <li>Equipment for first production runs</li>
+            <li>Getting our legal paperwork straight</li>
+            <li>Building relationships with local stores</li>
+            <li>Hiring our first full-time employees (from here, obviously)</li>
+        </ul>
+        <p>Phase 2 - Growing Local ($2.1M):</p>
+        <ul>
+            <li>Partnerships with co-packers (other local manufacturers who'll can our water)</li>
+            <li>More hiring from the community</li>
+            <li>Getting into every corner store, deli, and bodega in the city</li>
+            <li>Marketing that actually talks to Philadelphia people</li>
+        </ul>
+        <p>Phase 3 - Regional Expansion ($8.5M):</p>
+        <ul>
+            <li>Our own facility (creating local jobs)</li>
+            <li>Distribution throughout Greater Philadelphia region</li>
+            <li>Fleet of vehicles driven by local drivers</li>
+            <li>Becoming the obvious choice for anyone who actually lives here</li>
+        </ul>
+
+        <p class="subheading">Community Benefits Beyond Returns</p>
+        <ul>
+            <li>Local Jobs: Every dollar invested stays in Philadelphia, creating jobs for our neighbors</li>
+            <li>Environmental Impact: No trucking water across the country, aluminum cans that actually get recycled here</li>
+            <li>Community Ownership: Profits flow back to local investors, not to shareholders in New York or California</li>
+            <li>Local Supply Chain: Working with other Philadelphia businesses whenever possible</li>
+        </ul>
+
+        <p class="subheading">The Philadelphia Advantage</p>
+        <p>Look, we're not trying to take over the world. We're trying to take care of our people. Same crazy energy that made us fight the British Empire when everyone said we were nuts. Same energy that built this city when everyone counted us out.</p>
+        <p class="call-to-action">We've got pure water, we've got the tax exemption, we've got the local loyalty, and we've got the community infrastructure to make this work. You can invest in companies that'll ship your money to Silicon Valley, or you can invest in the company that'll keep your money working right here where you live.</p>
+        <p>You either get it or you don't. Either way, more for us.</p>
+    </div>
+</body>
+</html>
