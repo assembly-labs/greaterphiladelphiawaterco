@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Local Beverage Revolution: Washington's Strategy for Modern Founders</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400@700&family=Nunito+Sans:wght@300;400;600;700&family=Crimson+Text:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Colors */
+            --color-primary: #B8860B;
+            --color-primary-light: #D4A315;
+            --color-primary-dark: #8B6914;
+            --color-secondary: #A0522D;
+            --color-secondary-light: #C4673A;
+            --color-secondary-dark: #7A3E20;
+            --color-accent: #1B365D;
+            --color-accent-light: #2E5A8A;
+            --color-accent-dark: #0F1F33;
+            
+            /* Neutrals */
+            --color-neutral-50: #FDFCFA;
+            --color-neutral-100: #F7F5F3;
+            --color-neutral-200: #E8E4E0;
+            --color-neutral-300: #D1CBC3;
+            --color-neutral-400: #9B9089;
+            --color-neutral-500: #6B625A;
+            --color-neutral-600: #4A423C;
+            --color-neutral-700: #2F2A26;
+            --color-neutral-800: #1A1612;
+            --color-neutral-900: #0F0C0A;
+            
+            /* Typography */
+            --font-primary: 'Bebas Neue', Arial Black, sans-serif;
+            --font-secondary: 'Nunito Sans', Arial, sans-serif;
+            --font-accent: 'Crimson Text', Georgia, serif;
+            
+            --font-weight-light: 300;
+            --font-weight-regular: 400;
+            --font-weight-medium: 600;
+            --font-weight-bold: 700;
+            --font-weight-black: 900;
+            
+            --text-xs: 0.75rem;
+            --text-sm: 0.875rem;
+            --text-base: 1rem;
+            --text-lg: 1.125rem;
+            --text-xl: 1.25rem;
+            --text-2xl: 1.5rem;
+            --text-3xl: 1.875rem;
+            --text-4xl: 2.25rem;
+            --text-5xl: 3rem;
+            --text-6xl: 3.75rem;
+            
+            --leading-tight: 1.1;
+            --leading-normal: 1.4;
+            --leading-relaxed: 1.6;
+            --leading-loose: 1.8;
+            
+            /* Spacing */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+            --space-24: 6rem;
+            --space-32: 8rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-secondary);
+            font-size: var(--text-base);
+            line-height: var(--leading-relaxed);
+            color: var(--color-neutral-600);
+            background-color: var(--color-neutral-50);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-6);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--color-accent-dark) 0%, var(--color-accent) 50%, var(--color-accent-light) 100%);
+            color: var(--color-neutral-50);
+            padding: var(--space-24) 0 var(--space-20) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="stars" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%23D4A315" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23stars)"/></svg>');
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: var(--font-primary);
+            font-weight: var(--font-weight-black);
+            font-size: var(--text-6xl);
+            line-height: var(--leading-tight);
+            color: var(--color-primary-light);
+            text-transform: uppercase;
+            margin-bottom: var(--space-6);
+            letter-spacing: 0.02em;
+        }
+
+        .hero .subtitle {
+            font-family: var(--font-accent);
+            font-weight: var(--font-weight-regular);
+            font-size: var(--text-2xl);
+            line-height: var(--leading-normal);
+            margin-bottom: var(--space-8);
+            opacity: 0.95;
+            font-style: italic;
+            color: var(--color-primary-light);
+        }
+
+        .hero .description {
+            font-family: var(--font-secondary);
+            font-size: var(--text-lg);
+            line-height: var(--leading-relaxed);
+            max-width: 900px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .section {
+            padding: var(--space-20) 0;
+        }
+
+        .section:nth-child(even) {
+            background: linear-gradient(135deg, var(--color-neutral-100) 0%, var(--color-neutral-200) 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-16);
+        }
+
+        .section-title {
+            font-family: var(--font-primary);
+            font-weight: var(--font-weight-bold);
+            font-size: var(--text-4xl);
+            color: var(--color-primary);
+            text-transform: uppercase;
+            margin-bottom: var(--space-4);
+            letter-spacing: 0.02em;
+        }
+
+        .section-subtitle {
+            font-family: var(--font-accent);
+            font-weight: var(--font-weight-regular);
+            font-size: var(--text-xl);
+            color: var(--color-neutral-700);
+            max-width: 800px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+
+        .story-text {
+            font-size: var(--text-lg);
+            line-height: var(--leading-relaxed);
+            margin-bottom: var(--space-8);
+            color: var(--color-neutral-700);
+        }
+
+        .story-text strong {
+            color: var(--color-primary-dark);
+            font-weight: var(--font-weight-bold);
+        }
+
+        .story-text em {
+            color: var(--color-accent);
+            font-family: var(--font-accent);
+            font-style: italic;
+            font-weight: var(--font-weight-bold);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-8);
+            margin: var(--space-16) 0;
+        }
+
+        .metric-card {
+            background: var(--color-neutral-50);
+            border: 3px solid var(--color-primary);
+            border-radius: var(--space-2);
+            padding: var(--space-8);
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(184, 134, 11, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-accent) 100%);
+        }
+
+        .metric-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 24px rgba(184, 134, 11, 0.25);
+            border-color: var(--color-secondary);
+        }
+
+        .metric-number {
+            font-family: var(--font-primary);
+            font-weight: var(--font-weight-black);
+            font-size: var(--text-5xl);
+            color: var(--color-primary);
+            margin-bottom: var(--space-3);
+            display: block;
+            text-transform: uppercase;
+        }
+
+        .metric-label {
+            font-family: var(--font-primary);
+            font-weight: var(--font-weight-bold);
+            font-size: var(--text-xl);
+            color: var(--color-neutral-700);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-3);
+        }
+
+        .metric-description {
+            font-size: var(--text-sm);
+            color: var(--color-neutral-500);
+            line-height: var(--leading-normal);
+        }
+
+        .revolutionary-quote {
+            background: linear-gradient(135deg, var(--color-secondary-dark) 0%, var(--color-secondary) 100%);
+            color: var(--color-neutral-50);
+            padding: var(--space-12);
+            margin: var(--space-16) 0;
+            border-radius: var(--space-2);
+            border-left: 8px solid var(--color-primary);
+            position: relative;
+        }
+
+        .revolutionary-quote::before {
+            content: '"';
+            font-family: var(--font-primary);
+            font-size: 6rem;
+            color: var(--color-primary);
+            position: absolute;
+            top: -10px;
+            left: var(--space-6);
+            opacity: 0.3;
+        }
+
+        .revolutionary-quote .quote-text {
+            font-family: var(--font-accent);
+            font-size: var(--text-xl);
+            font-style: italic;
+            margin-bottom: var(--space-4);
+            position: relative;
+            z-index: 2;
+        }
+
+        .revolutionary-quote .quote-attribution {
+            font-family: var(--font-secondary);
+            font-size: var(--text-sm);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-primary-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .success-stories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-8);
+            margin: var(--space-16) 0;
+        }
+
+        .story-card {
+            background: var(--color-neutral-50);
+            border: 2px solid var(--color-neutral-200);
+            border-radius: var(--space-2);
+            padding: var(--space-8);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .story-card::before {
+            content: '★';
+            position: absolute;
+            top: var(--space-4);
+            right: var(--space-4);
+            color: var(--color-primary);
+            font-size: var(--text-2xl);
+        }
+
+        .story-card:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(184, 134, 11, 0.15);
+        }
+
+        .story-card h4 {
+            font-family: var(--font-primary);
+            font-weight: var(--font-weight-bold);
+            font-size: var(--text-2xl);
+            color: var(--color-accent);
+            text-transform: uppercase;
+            margin-bottom: var(--space-4);
+        }
+
+        .story-card .revenue {
+            font-family: var(--font-primary);
+            font-size: var(--text-xl);
+            color: var(--color-secondary);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-4);
+        }
+
+        .strategy-list {
+            list-style: none;
+            padding: 0;
+            margin: var(--space-8) 0;
+        }
+
+        .strategy-list li {
+            background: var(--color-neutral-50);
+            border: 2px solid var(--color-neutral-200);
+            border-radius: var(--space-2);
+            padding: var(--space-6);
+            margin-bottom: var(--space-4);
+            position: relative;
+            padding-left: var(--space-12);
+            transition: all 0.2s ease;
+        }
+
+        .strategy-list li::before {
+            content: '⚡';
+            position: absolute;
+            left: var(--space-4);
+            top: var(--space-6);
+            font-size: var(--text-xl);
+        }
+
+        .strategy-list li:hover {
+            border-color: var(--color-primary);
+            background: rgba(184, 134, 11, 0.05);
+        }
+
+        .strategy-list strong {
+            color: var(--color-primary-dark);
+            font-weight: var(--font-weight-bold);
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 50%, var(--color-secondary-dark) 100%);
+            color: var(--color-neutral-50);
+            padding: var(--space-24) 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="50,15 61,35 85,35 67,50 73,74 50,60 27,74 33,50 15,35 39,35" fill="%23FDFCFA" opacity="0.1"/></svg>');
+            background-size: 100px 100px;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-section h2 {
+            font-family: var(--font-primary);
+            font-weight: var(--font-weight-black);
+            font-size: var(--text-5xl);
+            text-transform: uppercase;
+            margin-bottom: var(--space-6);
+            letter-spacing: 0.02em;
+        }
+
+        .cta-section p {
+            font-size: var(--text-xl);
+            margin-bottom: var(--space-8);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+            line-height: var(--leading-relaxed);
+        }
+
+        .btn-primary {
+            background-color: var(--color-accent);
+            color: var(--color-neutral-50);
+            font-family: var(--font-primary);
+            font-weight: var(--font-weight-bold);
+            font-size: var(--text-lg);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: var(--space-4) var(--space-8);
+            border: 3px solid var(--color-accent);
+            border-radius: var(--space-2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-accent-dark);
+            border-color: var(--color-accent-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(27, 54, 93, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: var(--text-4xl);
+            }
+            
+            .hero .subtitle {
+                font-size: var(--text-xl);
+            }
+            
+            .metrics-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-6);
+            }
+            
+            .success-stories {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 0 var(--space-4);
+            }
+            
+            .section {
+                padding: var(--space-16) 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>The Local Beverage Revolution</h1>
+                <p class="subtitle">Washington's Strategy for Modern Founders</p>
+                <p class="description">Imagine being George Washington in the winter of 1776. You're facing the most powerful military force on Earth — the British Empire. But you have something they don't: you know the territory. And that changes everything.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">The Revolutionary Strategy</h2>
+                <p class="section-subtitle">Washington never tried to out-British the British. He fought local. Welcome to the beverage wars of 2025.</p>
+            </div>
+            
+            <p class="story-text">Washington didn't attempt to build a bigger navy or march in perfect formation across open fields. Instead, he did something that would shock his European-trained enemies: <strong>he fought local.</strong></p>
+            
+            <p class="story-text">While Coca-Cola and Pepsi spread their forces thin across a continental battlefield, <em>local brands like Cheerwine have captured 8% of North Carolina's entire soft drink market</em> with 92% brand recognition in their home state.</p>
+
+            <div class="revolutionary-quote">
+                <p class="quote-text">This is Washington's strategy applied to aluminum cans.</p>
+                <p class="quote-attribution">— The Intelligence That Would Make Benedict Arnold Switch Sides Again</p>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="metric-number">15-45%</span>
+                    <div class="metric-label">Regional Market Share</div>
+                    <p class="metric-description">Local beverage brands dominate their territories while nationals achieve only 2-8%</p>
+                </div>
+                
+                <div class="metric-card">
+                    <span class="metric-number">70-90%</span>
+                    <div class="metric-label">Customer Loyalty</div>
+                    <p class="metric-description">Regional brands vs 40-60% for national competitors - loyalty pays</p>
+                </div>
+                
+                <div class="metric-card">
+                    <span class="metric-number">40-60%</span>
+                    <div class="metric-label">Lower CAC</div>
+                    <p class="metric-description">Customer acquisition costs when you know your neighbors</p>
+                </div>
+                
+                <div class="metric-card">
+                    <span class="metric-number">73%</span>
+                    <div class="metric-label">Want Local</div>
+                    <p class="metric-description">Of consumers actively want to pay more for local products</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Territory Matters</h2>
+                <p class="section-subtitle">Local supply lines mean victory. Your products reach the front lines 3-7 days fresher.</p>
+            </div>
+            
+            <p class="story-text"><strong>Local distribution means 95-98% order fill rates</strong> versus 85-92% for transcontinental campaigns. Inventory moves <em>2-3x faster</em> when you're not managing logistics from London.</p>
+            
+            <ul class="strategy-list">
+                <li><strong>Transportation costs:</strong> 15-30% cheaper when you're not crossing the Delaware every day</li>
+                <li><strong>Premium pricing:</strong> 10-25% above national brands because loyalty pays</li>
+                <li><strong>Profit margins:</strong> 15-30% higher than national expansion strategies</li>
+                <li><strong>Consumer preference:</strong> 67% prefer locally-made products when available</li>
+            </ul>
+            
+            <p class="story-text">When 67% of consumers prefer locally-made products, you're not fighting against the tide of history — <em>you're riding it.</em></p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Victory Stories</h2>
+                <p class="section-subtitle">The Continental Congress of modern investors is taking notice.</p>
+            </div>
+            
+            <div class="success-stories">
+                <div class="story-card">
+                    <h4>Cheerwine</h4>
+                    <div class="revenue">$50-75M Annual Revenue</div>
+                    <p>8% of North Carolina's soft drink market with 92% brand recognition. From fighting smart, not big. Revolutionary results from knowing the territory.</p>
+                </div>
+                
+                <div class="story-card">
+                    <h4>Yuengling Brewery</h4>
+                    <div class="revenue">$550M+ Annually</div>
+                    <p>Founded in 1829, older than Civil War generals. #2 craft beer nationally by limiting campaign to 26 states. No crushing supply lines needed.</p>
+                </div>
+                
+                <div class="story-card">
+                    <h4>Crystal Springs</h4>
+                    <div class="revenue">$200-300M Revenue</div>
+                    <p>35-40% market share in New England with 85% repeat purchase rates. Guerrilla economics in action.</p>
+                </div>
+            </div>
+            
+            <p class="story-text">These companies use <strong>guerrilla economics, not imperial overstretch.</strong> Washington won by avoiding pitched battles he couldn't win and choosing engagements where local knowledge mattered.</p>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>The Revolution Is Here</h2>
+                <p>Your customers are your militia. They know you. They trust you. They'll march through winter storms to get your product because you're not some distant empire — you're their neighbors.</p>
+                <p><strong>Know your territory. Serve your people. Let the empire exhaust itself trying to be everything to everyone.</strong></p>
+<a href="mailto:drew@greaterphiladelphiawatercompany.com?subject=Join%20the%20Local%20Philly%20Water%20Revolution" class="btn-primary">Join The Revolution</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
