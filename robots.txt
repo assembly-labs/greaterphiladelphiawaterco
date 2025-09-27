@@ -1,0 +1,17 @@
+User-agent: *
+Disallow: /our-water
+Disallow: /find-local
+Disallow: /about
+Disallow: /products
+Disallow: /why-local
+Disallow: /contact
+Disallow: /faq
+Disallow: /neighborhoods
+Disallow: /wholesale
+Disallow: /budget-estimate/
+Disallow: /localsonly/
+Disallow: /opportunity/
+Disallow: /costofcans/
+Disallow: /fibi/
+Disallow: /bob
+
