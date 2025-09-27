@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greater Philadelphia Water Co. Production Budget</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito+Sans:wght@300;400;600;700&family=Crimson+Text:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Colors */
+            --color-primary: #B8860B;
+            --color-primary-light: #D4A315;
+            --color-primary-dark: #8B6914;
+            --color-secondary: #A0522D;
+            --color-accent: #1B365D;
+            --color-accent-light: #2E5A8A;
+            
+            /* Neutrals */
+            --color-neutral-50: #FDFCFA;
+            --color-neutral-100: #F7F5F3;
+            --color-neutral-200: #E8E4E0;
+            --color-neutral-300: #D1CBC3;
+            --color-neutral-400: #9B9089;
+            --color-neutral-500: #6B625A;
+            --color-neutral-600: #4A423C;
+            --color-neutral-700: #2F2A26;
+            --color-neutral-800: #1A1612;
+            --color-neutral-900: #0F0C0A;
+            
+            /* Typography */
+            --font-primary: 'Bebas Neue', Arial Black, sans-serif;
+            --font-secondary: 'Nunito Sans', Arial, sans-serif;
+            --font-accent: 'Crimson Text', Georgia, serif;
+            
+            /* Spacing */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-secondary);
+            line-height: 1.6;
+            color: var(--color-neutral-700);
+            background-color: var(--color-neutral-50);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-4);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: var(--color-neutral-50);
+            padding: var(--space-20) 0 var(--space-16);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.1"/><circle cx="80" cy="40" r="1" fill="white" opacity="0.1"/><circle cx="40" cy="70" r="1.5" fill="white" opacity="0.1"/><circle cx="90" cy="80" r="1" fill="white" opacity="0.1"/></svg>');
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) translateX(0px); }
+            50% { transform: translateY(-10px) translateX(5px); }
+            100% { transform: translateY(0px) translateX(0px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: var(--font-primary);
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: var(--space-4);
+            letter-spacing: 0.02em;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 0.8s ease-out 0.2s forwards;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            margin-bottom: var(--space-6);
+            opacity: 0.9;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 0.8s ease-out 0.4s forwards;
+        }
+
+        .summary-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-6);
+            margin-top: var(--space-8);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 0.8s ease-out 0.6s forwards;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--space-2);
+            padding: var(--space-6);
+            text-align: center;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-value {
+            font-family: var(--font-primary);
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: var(--space-2);
+            color: var(--color-neutral-50);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            padding: var(--space-20) 0;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-family: var(--font-primary);
+            font-size: clamp(2rem, 6vw, 3rem);
+            color: var(--color-primary);
+            text-transform: uppercase;
+            margin-bottom: var(--space-8);
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -var(--space-2);
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--color-primary);
+        }
+
+        .breakdown-grid {
+            display: grid;
+            gap: var(--space-8);
+            margin-bottom: var(--space-16);
+        }
+
+        .breakdown-card {
+            background: var(--color-neutral-100);
+            border: 2px solid var(--color-neutral-200);
+            border-radius: var(--space-3);
+            padding: var(--space-8);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .breakdown-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--color-primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .breakdown-card.visible::before {
+            transform: scaleX(1);
+        }
+
+        .breakdown-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(184, 134, 11, 0.15);
+            border-color: var(--color-primary-light);
+        }
+
+        .breakdown-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-6);
+            flex-wrap: wrap;
+            gap: var(--space-4);
+        }
+
+        .breakdown-title {
+            font-family: var(--font-primary);
+            font-size: 1.8rem;
+            color: var(--color-neutral-800);
+            text-transform: uppercase;
+        }
+
+        .breakdown-total {
+            font-family: var(--font-primary);
+            font-size: 2rem;
+            color: var(--color-primary);
+            font-weight: 900;
+        }
+
+        .breakdown-percentage {
+            background: var(--color-primary);
+            color: var(--color-neutral-50);
+            padding: var(--space-1) var(--space-3);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .item-list {
+            display: grid;
+            gap: var(--space-4);
+        }
+
+        .item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: var(--space-4);
+            align-items: center;
+            padding: var(--space-4);
+            background: var(--color-neutral-50);
+            border-radius: var(--space-2);
+            border-left: 3px solid var(--color-primary);
+            transition: all 0.3s ease;
+        }
+
+        .item:hover {
+            background: var(--color-neutral-100);
+            transform: translateX(5px);
+        }
+
+        .item-name {
+            font-weight: 600;
+            color: var(--color-neutral-800);
+        }
+
+        .item-details {
+            font-size: 0.9rem;
+            color: var(--color-neutral-600);
+            margin-top: var(--space-1);
+        }
+
+        .item-cost {
+            font-family: var(--font-primary);
+            font-size: 1.2rem;
+            color: var(--color-primary);
+            font-weight: 700;
+            text-align: right;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin: var(--space-6) 0;
+            border-radius: var(--space-2);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--color-neutral-50);
+        }
+
+        th, td {
+            padding: var(--space-4);
+            text-align: left;
+            border-bottom: 1px solid var(--color-neutral-200);
+        }
+
+        th {
+            background: var(--color-primary);
+            color: var(--color-neutral-50);
+            font-family: var(--font-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+            position: sticky;
+            top: 0;
+        }
+
+        td {
+            font-family: var(--font-secondary);
+            transition: background 0.2s ease;
+        }
+
+        tr:hover td {
+            background: var(--color-neutral-100);
+        }
+
+        .cost-cell {
+            font-family: var(--font-primary);
+            color: var(--color-primary);
+            font-weight: 700;
+            text-align: right;
+        }
+
+        .unit-economics {
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
+            color: var(--color-neutral-50);
+            border-radius: var(--space-3);
+            padding: var(--space-8);
+            margin: var(--space-16) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .unit-economics::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M0,50 Q25,25 50,50 T100,50 V100 H0 Z" fill="white" opacity="0.05"/></svg>');
+            animation: wave 15s infinite linear;
+        }
+
+        @keyframes wave {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .unit-economics-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .unit-economics h3 {
+            font-family: var(--font-primary);
+            font-size: 2rem;
+            margin-bottom: var(--space-6);
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .economics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-6);
+        }
+
+        .economics-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--space-2);
+            padding: var(--space-6);
+            backdrop-filter: blur(10px);
+        }
+
+        .economics-section h4 {
+            font-family: var(--font-primary);
+            font-size: 1.3rem;
+            margin-bottom: var(--space-4);
+            text-transform: uppercase;
+            color: var(--color-neutral-50);
+        }
+
+        .cost-breakdown {
+            font-family: 'Courier New', monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: var(--space-4);
+            border-radius: var(--space-2);
+            font-size: 0.9rem;
+            line-height: 1.8;
+            white-space: pre-line;
+        }
+
+        .highlight-box {
+            background: var(--color-primary);
+            color: var(--color-neutral-50);
+            border-radius: var(--space-2);
+            padding: var(--space-6);
+            margin: var(--space-8) 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .highlight-box:hover::before {
+            left: 100%;
+        }
+
+        .highlight-box h3 {
+            font-family: var(--font-primary);
+            font-size: 1.8rem;
+            margin-bottom: var(--space-4);
+            text-transform: uppercase;
+        }
+
+        .recommendations {
+            background: var(--color-neutral-100);
+            border-left: 5px solid var(--color-secondary);
+            padding: var(--space-8);
+            border-radius: 0 var(--space-2) var(--space-2) 0;
+            margin: var(--space-16) 0;
+        }
+
+        .recommendations h3 {
+            font-family: var(--font-primary);
+            color: var(--color-secondary);
+            font-size: 1.8rem;
+            margin-bottom: var(--space-6);
+            text-transform: uppercase;
+        }
+
+        .recommendations ol {
+            counter-reset: recommendation;
+            list-style: none;
+        }
+
+        .recommendations li {
+            counter-increment: recommendation;
+            margin-bottom: var(--space-4);
+            padding-left: var(--space-8);
+            position: relative;
+        }
+
+        .recommendations li::before {
+            content: counter(recommendation);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: var(--color-secondary);
+            color: var(--color-neutral-50);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-primary);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .progress-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--color-neutral-200);
+            z-index: 1000;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 var(--space-3);
+            }
+
+            .hero {
+                padding: var(--space-16) 0 var(--space-12);
+            }
+
+            .section {
+                padding: var(--space-12) 0;
+            }
+
+            .breakdown-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-2);
+            }
+
+            .item {
+                grid-template-columns: 1fr;
+                gap: var(--space-2);
+            }
+
+            .item-cost {
+                text-align: left;
+            }
+
+            th, td {
+                padding: var(--space-2);
+                font-size: 0.9rem;
+            }
+
+            .economics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-indicator">
+        <div class="progress-bar"></div>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Production Budget</h1>
+                <p class="subtitle">Greater Philadelphia Water Co. Strategic Investment Analysis</p>
+                
+                <div class="summary-stats">
+                    <div class="stat-card">
+                        <div class="stat-value">$69,420</div>
+                        <div class="stat-label">Total Budget</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">12,500</div>
+                        <div class="stat-label">Units Produced</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">$5.24</div>
+                        <div class="stat-label">Cost Per Unit</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">62%</div>
+                        <div class="stat-label">Projected Margin</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Executive Summary</h2>
+            
+            <div class="highlight-box">
+                <h3>Investment Overview</h3>
+                <p><strong>Your $69,420 budget will produce 12,500 units (1,042 cases) at $5.24 per unit all-in cost with $3,920 remaining for additional marketing or contingency.</strong> This positions you for retail pricing around $2.49-$2.79 per can to achieve healthy 55-65% gross margins.</p>
+            </div>
+
+            <div class="breakdown-grid">
+                <div class="fade-in">
+                    <div class="breakdown-card">
+                        <div class="breakdown-header">
+                            <div>
+                                <div class="breakdown-title">Target Production</div>
+                                <div class="breakdown-percentage">1,042 Cases</div>
+                            </div>
+                            <div class="breakdown-total">12,500 Units</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fade-in">
+                    <div class="breakdown-card">
+                        <div class="breakdown-header">
+                            <div>
+                                <div class="breakdown-title">Actual Cost</div>
+                                <div class="breakdown-percentage">$3,920 Under Budget</div>
+                            </div>
+                            <div class="breakdown-total">$65,500</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fade-in">
+                    <div class="breakdown-card">
+                        <div class="breakdown-header">
+                            <div>
+                                <div class="breakdown-title">Recommended Retail</div>
+                                <div class="breakdown-percentage">$10.76 Per 4-Pack</div>
+                            </div>
+                            <div class="breakdown-total">$2.69/Can</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p style="font-style: italic; text-align: center; color: var(--color-neutral-600); margin-top: var(--space-8);">
+                Exceptional cost savings achieved through Hart Print's digital printing process (no setup fees, no sleeves) combined with established partners (Great Oak Springs + Iron Heart Canning)
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Detailed Cost Breakdown</h2>
+
+            <div class="breakdown-grid">
+                <div class="fade-in breakdown-card">
+                    <div class="breakdown-header">
+                        <div>
+                            <div class="breakdown-title">Business Setup & Insurance</div>
+                            <div class="breakdown-percentage">6%</div>
+                        </div>
+                        <div class="breakdown-total">$4,200</div>
+                    </div>
+                    <div class="item-list">
+                        <div class="item">
+                            <div>
+                                <div class="item-name">Business Insurance (General Liability)</div>
+                                <div class="item-details">Annual premium for product liability coverage</div>
+                            </div>
+                            <div class="item-cost">$2,000</div>
+                        </div>
+                        <div class="item">
+                            <div>
+                                <div class="item-name">Philadelphia Business License</div>
+                                <div class="item-details">Basic commercial activity license</div>
+                            </div>
+                            <div class="item-cost">$200</div>
+                        </div>
+                        <div class="item">
+                            <div>
+                                <div class="item-name">Legal/Trademark</div>
+                                <div class="item-details">Business formation + trademark registration</div>
+                            </div>
+                            <div class="item-cost">$1,500</div>
+                        </div>
+                        <div class="item">
+                            <div>
+                                <div class="item-name">Professional Consultations</div>
+                                <div class="item-details">Legal/accounting setup consultations</div>
+                            </div>
+                            <div class="item-cost">$500</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fade-in breakdown-card">
+                    <div class="breakdown-header">
+                        <div>
+                            <div class="breakdown-title">Packaging & Materials</div>
+                            <div class="breakdown-percentage">41%</div>
+                        </div>
+                        <div class="breakdown-total">$28,580</div>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Quantity</th>
+                                    <th>Unit Cost</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>16oz Aluminum Cans (Brite/Undecorated)</td>
+                                    <td>12,500</td>
+                                    <td>$0.28</td>
+                                    <td class="cost-cell">$3,500</td>
+                                </tr>
+                                <tr>
+                                    <td>Hart Print Digital Printing</td>
+                                    <td>12,500</td>
+                                    <td>$0.55</td>
+                                    <td class="cost-cell">$6,875</td>
+                                </tr>
+                                <tr>
+                                    <td>Gold Can Lids/Ends (202 diameter)</td>
+                                    <td>12,500</td>
+                                    <td>$0.10</td>
+                                    <td class="cost-cell">$1,250</td>
+                                </tr>
+                                <tr>
+                                    <td>12-Pack Cardboard Carriers</td>
+                                    <td>1,042</td>
+                                    <td>$0.80</td>
+                                    <td class="cost-cell">$834</td>
+                                </tr>
+                                <tr>
+                                    <td>Water Sourcing (Great Oak Springs)</td>
+                                    <td>3,125 gal</td>
+                                    <td>$0.25</td>
+                                    <td class="cost-cell">$781</td>
+                                </tr>
+                                <tr>
+                                    <td>CO2 for Sparkling</td>
+                                    <td>150 lbs</td>
+                                    <td>$1.80</td>
+                                    <td class="cost-cell">$270</td>
+                                </tr>
+                                <tr>
+                                    <td>Hart Print Design Support</td>
+                                    <td>1 project</td>
+                                    <td>$1,500</td>
+                                    <td class="cost-cell">$1,500</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="fade-in breakdown-card">
+                    <div class="breakdown-header">
+                        <div>
+                            <div class="breakdown-title">Co-Packing & Production</div>
+                            <div class="breakdown-percentage">35%</div>
+                        </div>
+                        <div class="breakdown-total">$24,000</div>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Service</th>
+                                    <th>Rate</th>
+                                    <th>Volume</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Iron Heart Mobile Canning</td>
+                                    <td>$0.35/unit</td>
+                                    <td>12,500 units</td>
+                                    <td class="cost-cell">$4,375</td>
+                                </tr>
+                                <tr>
+                                    <td>Setup & Mobilization</td>
+                                    <td>$1,500</td>
+                                    <td>1 time</td>
+                                    <td class="cost-cell">$1,500</td>
+                                </tr>
+                                <tr>
+                                    <td>Quality Control & Testing</td>
+                                    <td>$0.10/unit</td>
+                                    <td>12,500 units</td>
+                                    <td class="cost-cell">$1,250</td>
+                                </tr>
+                                <tr>
+                                    <td>Labor & Production Management</td>
+                                    <td>$0.25/unit</td>
+                                    <td>12,500 units</td>
+                                    <td class="cost-cell">$3,125</td>
+                                </tr>
+                                <tr>
+                                    <td>Water Transportation</td>
+                                    <td>$400/load</td>
+                                    <td>4 loads</td>
+                                    <td class="cost-cell">$1,600</td>
+                                </tr>
+                                <tr>
+                                    <td>Production Site Rental</td>
+                                    <td>$450/day</td>
+                                    <td>8 days</td>
+                                    <td class="cost-cell">$3,600</td>
+                                </tr>
+                                <tr>
+                                    <td>Carbonation Equipment & Setup</td>
+                                    <td>$2,800</td>
+                                    <td>1 time</td>
+                                    <td class="cost-cell">$2,800</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="fade-in breakdown-card">
+                    <div class="breakdown-header">
+                        <div>
+                            <div class="breakdown-title">Working Capital & Operations</div>
+                            <div class="breakdown-percentage">18%</div>
+                        </div>
+                        <div class="breakdown-total">$12,640</div>
+                    </div>
+                    <div class="item-list">
+                        <div class="item">
+                            <div>
+                                <div class="item-name">Emergency Contingency Fund</div>
+                                <div class="item-details">5% buffer for cost overruns</div>
+                            </div>
+                            <div class="item-cost">$3,275</div>
+                        </div>
+                        <div class="item">
+                            <div>
+                                <div class="item-name">Enhanced Marketing & Sampling</div>
+                                <div class="item-details">Professional marketing materials, extensive sampling program</div>
+                            </div>
+                            <div class="item-cost">$4,500</div>
+                        </div>
+                        <div class="item">
+                            <div>
+                                <div class="item-name">Storage/Warehouse (First 3 Months)</div>
+                                <div class="item-details">Extended storage for inventory management</div>
+                            </div>
+                            <div class="item-cost">$1,350</div>
+                        </div>
+                        <div class="item">
+                            <div>
+                                <div class="item-name">Working Capital Buffer</div>
+                                <div class="item-details">Extended cash flow buffer for operations</div>
+                            </div>
+                            <div class="item-cost">$2,515</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Total Project Investment</h3>
+                <p><strong>Budget Used: $65,500 • Budget Remaining: $3,920</strong></p>
+                <p>Available for additional marketing, inventory, or future production planning</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="unit-economics">
+                <div class="unit-economics-content">
+                    <h3>Unit Economics Analysis</h3>
+                    <div class="economics-grid">
+                        <div class="economics-section">
+                            <h4>Cost Structure per 16oz Can</h4>
+                            <div class="cost-breakdown">Direct Materials:           $0.93
+Water (0.25 gal @ $0.25):  $0.06
+Can (16oz brite):          $0.28
+Hart Print digital:        $0.55
+Gold lid:                  $0.10
+Carbonation (if applicable): $0.02
+
+Production Costs:          $0.60
+Iron Heart canning:        $0.35
+Labor & management:        $0.25
+
+Allocated Costs:           $3.71
+Business setup:           $0.34
+Design support:           $0.12
+Working capital:          $1.01
+Facility & equipment:     $0.48
+Quality control:          $0.04
+Transportation:           $0.16
+Contingency:              $0.26
+Production overhead:      $1.30
+
+TOTAL COST PER UNIT:      $5.24</div>
+                        </div>
+                        
+                        <div class="economics-section">
+                            <h4>Pricing Strategy</h4>
+                            <div class="item-list">
+                                <div class="item">
+                                    <div>
+                                        <div class="item-name">Wholesale Price</div>
+                                        <div class="item-details">Minimum 40% margin</div>
+                                    </div>
+                                    <div class="item-cost">$1.55/can</div>
+                                </div>
+                                <div class="item">
+                                    <div>
+                                        <div class="item-name">Suggested Retail</div>
+                                    </div>
+                                    <div class="item-cost">$2.69/can</div>
+                                </div>
+                                <div class="item">
+                                    <div>
+                                        <div class="item-name">4-pack Retail</div>
+                                    </div>
+                                    <div class="item-cost">$10.49</div>
+                                </div>
+                                <div class="item">
+                                    <div>
+                                        <div class="item-name">Grocery Chain Pricing</div>
+                                    </div>
+                                    <div class="item-cost">$2.39-$2.79</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Production Strategy</h2>
+            
+            <div class="breakdown-grid">
+                <div class="fade-in breakdown-card">
+                    <div class="breakdown-header">
+                        <div>
+                            <div class="breakdown-title">Batch 1: Still Water</div>
+                            <div class="breakdown-percentage">Months 1-2</div>
+                        </div>
+                        <div class="breakdown-total">7,500 Units</div>
+                    </div>
+                    <p><strong>Focus:</strong> Market entry and process optimization</p>
+                    <p><strong>Cost per unit:</strong> $5.80 (slightly higher due to setup costs)</p>
+                </div>
+
+                <div class="fade-in breakdown-card">
+                    <div class="breakdown-header">
+                        <div>
+                            <div class="breakdown-title">Batch 2: Sparkling Water</div>
+                            <div class="breakdown-percentage">Month 3</div>
+                        </div>
+                        <div class="breakdown-total">3,500 Units</div>
+                    </div>
+                    <p><strong>Focus:</strong> Product line extension and market feedback</p>
+                    <p><strong>Cost per unit:</strong> $5.35 (lower setup costs, established process)</p>
+                </div>
+
+                <div class="fade-in breakdown-card">
+                    <div class="breakdown-header">
+                        <div>
+                            <div class="breakdown-title">Batch 3: Mixed Production</div>
+                            <div class="breakdown-percentage">Month 4</div>
+                        </div>
+                        <div class="breakdown-total">1,500 Units</div>
+                    </div>
+                    <p><strong>Focus:</strong> Optimization based on market response</p>
+                    <p><strong>Cost per unit:</strong> $5.15 (minimal setup, economies achieved)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Break-Even Analysis</h2>
+            
+            <div class="highlight-box">
+                <h3>Investment Recovery Timeline</h3>
+                <p><strong>At $65,500 investment producing 12,500 units:</strong></p>
+                <p>Cost per unit: $5.24 • Need to sell at: $10.48/unit to break even in one production cycle</p>
+                <p><strong>More realistic:</strong> Sell at $2.69 retail, recover investment over 2 production cycles</p>
+            </div>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cycle</th>
+                            <th>Units</th>
+                            <th>Investment</th>
+                            <th>Revenue</th>
+                            <th>Net Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cycle 1</td>
+                            <td>12,500 units</td>
+                            <td>-$65,500</td>
+                            <td>+$33,625</td>
+                            <td class="cost-cell">-$31,875</td>
+                        </tr>
+                        <tr>
+                            <td>Cycle 2</td>
+                            <td>15,000 units</td>
+                            <td>-$28,000</td>
+                            <td>+$40,350</td>
+                            <td class="cost-cell">+$12,350</td>
+                        </tr>
+                        <tr>
+                            <td>Cycle 3</td>
+                            <td>20,000 units</td>
+                            <td>-$40,000</td>
+                            <td>+$53,800</td>
+                            <td class="cost-cell">+$13,800</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="background: var(--color-neutral-100); padding: var(--space-6); border-radius: var(--space-2); margin: var(--space-8) 0;">
+                <p><strong>Break-even point:</strong> After selling approximately 16,000-18,000 total units</p>
+                <p><strong>Monthly target:</strong> Need to sell ~1,800 units/month to achieve sustainable cash flow</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="recommendations">
+                <h3>Strategic Recommendations</h3>
+                <ol>
+                    <li><strong>Start with both still and sparkling</strong> - your volume now supports the complexity</li>
+                    <li><strong>Focus on 16oz format</strong> - optimal economics achieved at this volume</li>
+                    <li><strong>Use Hart Print digital printing</strong> - cost-effective for this production run size</li>
+                    <li><strong>Leverage Iron Heart + Great Oak partnership</strong> - eliminates regulatory headaches</li>
+                    <li><strong>Plan for 2-month production cycle</strong> - better cash flow management</li>
+                </ol>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Bottom Line</h3>
+                <p><strong>$69,420 gets you an outstanding market entry with 12,500 premium cans at just $5.24 per unit, with $3,920 remaining budget.</strong> This positions you for competitive $2.69 retail pricing with excellent 62% margins. Success metrics should focus on achieving 1,800+ units/month sales velocity to reach positive cash flow by month 8-10.</p>
+                
+                <p style="margin-top: var(--space-4);"><strong>The Hart Print Advantage:</strong> Digital printing eliminates $7,625 in setup and sleeve costs while delivering superior print quality and unlimited design flexibility. Combined with gold lids, you'll have a truly premium-looking product that justifies Philadelphia's premium local pricing.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scroll progress indicator
+        function updateProgressBar() {
+            const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollCurrent = window.pageYOffset;
+            const scrollPercent = (scrollCurrent / scrollTotal) * 100;
+            document.querySelector('.progress-bar').style.width = scrollPercent + '%';
+        }
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Initialize animations and observers
+        document.addEventListener('DOMContentLoaded', () => {
+            // Observe all sections and fade-in elements
+            document.querySelectorAll('.section, .fade-in, .breakdown-card').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Update progress bar on scroll
+            window.addEventListener('scroll', updateProgressBar);
+            
+            // Add smooth scrolling behavior
+            document.documentElement.style.scrollBehavior = 'smooth';
+
+            // Add hover effects to tables
+            document.querySelectorAll('table tr').forEach(row => {
+                row.addEventListener('mouseenter', () => {
+                    row.style.transform = 'scale(1.01)';
+                    row.style.transition = 'transform 0.2s ease';
+                });
+                
+                row.addEventListener('mouseleave', () => {
+                    row.style.transform = 'scale(1)';
+                });
+            });
+
+            // Add click effects to cards
+            document.querySelectorAll('.breakdown-card, .stat-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    card.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        card.style.transform = '';
+                    }, 150);
+                });
+            });
+
+            // Parallax effect for hero background
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const parallax = document.querySelector('.hero::before');
+                if (parallax) {
+                    const speed = scrolled * 0.5;
+                    document.querySelector('.hero').style.transform = `translateY(${speed}px)`;
+                }
+            });
+
+            // Add loading animation
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s ease';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Performance optimization: throttle scroll events
+        let ticking = false;
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateProgressBar);
+                ticking = true;
+                setTimeout(() => { ticking = false; }, 16);
+            }
+        }
+
+        window.addEventListener('scroll', requestTick);
+    </script>
+</body>
+</html>
