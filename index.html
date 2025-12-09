@@ -54,21 +54,21 @@
 </head>
 <body>
   <main role="main" class="page">
-    <section id="hero" class="section section--hero">
-      <div class="container hero__wrap">
-        <h1 class="hero__title">
-          It's not just water. It's local, made for locals.<br>
-          Tapped here. Canned here. For here.
-        </h1>
-      </div>
-    </section>
-
     <section id="product" class="section section--product">
       <div id="media-container" class="media-container">
         <video id="product-video" class="product-media product-media--video" autoplay loop muted playsinline>
-          <source src="video-product-shot-gpwco.mp4?v=20251209" type="video/mp4">
+          <source src="video-product-shot-gpwco.mp4?v=20251209e" type="video/mp4">
         </video>
-        <img id="product-image" class="product-media product-media--image" src="image-product-shot-gpwco.jpg?v=20251209" alt="Greater Philadelphia Water Co. Product" style="display: none;">
+        <img id="product-image" class="product-media product-media--image" src="image-product-shot-gpwco.jpg?v=20251209e" alt="Greater Philadelphia Water Co. Product" style="display: none;">
+
+        <div class="hero-overlay">
+          <div class="container">
+            <h1 class="hero__title">
+              It's not just water. It's local, made for locals.<br>
+              Tapped here. Canned here. For here.
+            </h1>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -98,38 +98,20 @@
       padding: 0 1rem;
     }
 
-    /* Hero Section */
-    .section--hero {
-      min-height: 60vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
-      padding: 4rem 0;
-    }
-    .hero__wrap {
-      max-width: 900px;
-      text-align: center;
-    }
-    .hero__title {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 700;
-      line-height: 1.4;
-      margin: 0;
-    }
-
     /* Product Section */
     .section--product {
       position: relative;
       width: 100%;
-      height: 100vh;
-      overflow: hidden;
+      min-height: 150vh;
       background: #000;
     }
     .media-container {
       width: 100%;
-      height: 100%;
-      position: relative;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
     }
     .product-media {
       width: 100%;
@@ -149,8 +131,36 @@
       left: 0;
     }
 
+    /* Hero Overlay */
+    .hero-overlay {
+      position: relative;
+      z-index: 10;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      will-change: transform, opacity;
+    }
+    .hero-overlay .container {
+      max-width: 1400px;
+      width: 100%;
+    }
+    .hero__title {
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin: 0;
+      color: #fff;
+      text-align: center;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      letter-spacing: -0.02em;
+    }
+
     /* Footer */
     .footer {
+      position: relative;
+      z-index: 10;
       padding: 2rem 0;
       background: #111;
       text-align: center;
@@ -162,26 +172,30 @@
 
     /* Responsive Design */
     @media (max-width: 768px) {
-      .section--hero {
-        min-height: 50vh;
-        padding: 3rem 0;
+      .hero-overlay {
+        padding: 1.5rem;
+        min-height: 100vh;
       }
       .hero__title {
-        font-size: clamp(1.5rem, 6vw, 2.5rem);
-        line-height: 1.3;
+        font-size: clamp(2.5rem, 10vw, 5rem);
+        line-height: 1.2;
       }
       .section--product {
-        height: 70vh;
+        min-height: 150vh;
       }
     }
 
     @media (max-width: 480px) {
-      .section--hero {
-        padding: 2rem 0;
-        min-height: 40vh;
+      .hero-overlay {
+        padding: 1rem;
+        min-height: 100vh;
+      }
+      .hero__title {
+        font-size: clamp(2rem, 9vw, 4rem);
+        line-height: 1.25;
       }
       .section--product {
-        height: 60vh;
+        min-height: 150vh;
       }
     }
   </style>
@@ -239,6 +253,53 @@
           imageElement.style.display = 'block';
         }
       }, 3000);
+    })();
+
+    // Scroll-based text animation (tween off screen)
+    (function() {
+      const heroOverlay = document.querySelector('.hero-overlay');
+
+      function updateTextPosition() {
+        const scrollY = window.scrollY || window.pageYOffset;
+        const windowHeight = window.innerHeight;
+
+        // Calculate progress (0 = top, 1 = complete fadeout after 60vh scroll)
+        const progress = Math.min(scrollY / (windowHeight * 0.6), 1);
+
+        // Apply opacity fade out with smooth curve
+        let opacity = 1 - (progress * 1.3);
+        opacity = Math.max(0, opacity); // Clamp to 0
+
+        // Apply upward movement - smooth parallax
+        const translateY = -(scrollY * 0.6);
+
+        heroOverlay.style.opacity = opacity;
+        heroOverlay.style.transform = `translateY(${translateY}px)`;
+
+        // Completely hide and disable interaction when invisible
+        if (opacity <= 0.01) {
+          heroOverlay.style.visibility = 'hidden';
+          heroOverlay.style.pointerEvents = 'none';
+        } else {
+          heroOverlay.style.visibility = 'visible';
+          heroOverlay.style.pointerEvents = 'auto';
+        }
+      }
+
+      // Initial call
+      updateTextPosition();
+
+      // Update on scroll with throttling for performance
+      let ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          window.requestAnimationFrame(function() {
+            updateTextPosition();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
     })();
   </script>
 </body>
