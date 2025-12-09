@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5, user-scalable=yes, viewport-fit=cover">
+    <title>Greater Philadelphia Water Company | Investor Overview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Text:ital@0;1&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Primary Colors */
+            --color-primary: #B8860B;
+            --color-primary-light: #D4A315;
+            --color-primary-dark: #8B6914;
+            --color-primary-100: rgba(184, 134, 11, 0.1);
+            --color-primary-200: rgba(184, 134, 11, 0.2);
+
+            /* Secondary Colors */
+            --color-secondary: #A0522D;
+            --color-secondary-light: #C4673A;
+            --color-secondary-dark: #7A3E20;
+
+            /* Accent Colors */
+            --color-accent: #1B365D;
+            --color-accent-light: #2E5A8A;
+            --color-accent-dark: #0F1F33;
+
+            /* Neutrals */
+            --color-neutral-50: #FDFCFA;
+            --color-neutral-100: #F7F5F3;
+            --color-neutral-200: #E8E4E0;
+            --color-neutral-300: #D1CBC3;
+            --color-neutral-400: #9B9089;
+            --color-neutral-500: #6B625A;
+            --color-neutral-600: #4A423C;
+            --color-neutral-700: #2F2A26;
+            --color-neutral-800: #1A1612;
+            --color-neutral-900: #0F0C0A;
+
+            /* Typography */
+            --font-primary: 'Bebas Neue', Arial Black, sans-serif;
+            --font-secondary: 'Nunito Sans', Arial, sans-serif;
+            --font-accent: 'Crimson Text', Georgia, serif;
+
+            /* Spacing */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+            --space-24: 6rem;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: var(--font-secondary);
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--color-neutral-700);
+            background-color: var(--color-neutral-50);
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Improve touch targets for mobile */
+        @media (max-width: 768px) {
+            a, button {
+                min-height: 44px;
+                min-width: 44px;
+            }
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: var(--font-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            line-height: 1.1;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            color: var(--color-primary);
+        }
+
+        h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            color: var(--color-neutral-800);
+            margin-bottom: var(--space-6);
+        }
+
+        h3 {
+            font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+            color: var(--color-primary);
+            margin-bottom: var(--space-4);
+        }
+
+        p {
+            margin-bottom: var(--space-4);
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        strong {
+            color: var(--color-neutral-800);
+        }
+
+        .text-accent {
+            font-family: var(--font-accent);
+            font-style: italic;
+            color: var(--color-accent);
+        }
+
+        /* Layout */
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 var(--space-6);
+        }
+
+        section {
+            padding: var(--space-20) 0;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--color-neutral-50);
+            border-bottom: 3px solid var(--color-primary);
+            padding: var(--space-4) 0;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-primary);
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--space-6);
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--font-primary);
+            font-size: 0.9rem;
+            color: var(--color-neutral-700);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: var(--space-2) 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: var(--space-3);
+            min-width: 44px;
+            min-height: 44px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--color-primary);
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle { display: flex; }
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--color-neutral-50);
+                flex-direction: column;
+                padding: var(--space-6);
+                gap: var(--space-3);
+                border-bottom: 3px solid var(--color-primary);
+                transform: translateY(-100%);
+                opacity: 0;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                z-index: 999;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            }
+            .nav-links a {
+                padding: var(--space-3) 0;
+                display: block;
+            }
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            background: linear-gradient(135deg, var(--color-neutral-50) 0%, var(--color-neutral-100) 100%);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(ellipse, var(--color-primary-100) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-12);
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-text {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .hero-tagline {
+            font-family: var(--font-primary);
+            font-size: 1rem;
+            color: var(--color-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: var(--space-4);
+        }
+
+        .hero h1 {
+            margin-bottom: var(--space-6);
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-accent);
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--color-accent);
+            margin-bottom: var(--space-6);
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--color-neutral-600);
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: contain;
+            filter: drop-shadow(0 25px 50px rgba(0,0,0,0.2));
+        }
+
+        @media (max-width: 900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: var(--space-6);
+            }
+            .hero-image {
+                order: -1;
+                justify-content: center;
+                margin-bottom: var(--space-4);
+            }
+            .hero-image img {
+                max-height: 300px;
+                width: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding-top: 80px;
+                min-height: auto;
+                padding-bottom: var(--space-8);
+            }
+            .hero-image img {
+                max-height: 250px;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+        }
+
+        /* Section Styles */
+        .section-dark {
+            background: var(--color-accent);
+            color: var(--color-neutral-100);
+        }
+
+        .section-dark p,
+        .section-dark li {
+            color: var(--color-neutral-100);
+        }
+
+        .section-dark strong {
+            color: var(--color-neutral-50);
+        }
+
+        .section-dark .highlight-yellow {
+            color: #FFD700 !important;
+            font-weight: bold;
+        }
+
+        .section-dark h2 {
+            color: var(--color-primary);
+        }
+
+        .section-dark h3 {
+            color: var(--color-primary-light);
+        }
+
+        .section-alt {
+            background: var(--color-neutral-100);
+        }
+
+        .section-accent {
+            background: var(--color-secondary);
+            background: linear-gradient(135deg, var(--color-secondary-dark) 0%, var(--color-secondary) 100%);
+            color: var(--color-neutral-100);
+            position: relative;
+        }
+
+        .section-accent::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 80px,
+                rgba(0,0,0,0.02) 80px,
+                rgba(0,0,0,0.02) 160px
+            );
+            pointer-events: none;
+        }
+
+        .section-accent h2 {
+            color: var(--color-neutral-50);
+        }
+
+        .section-accent h3 {
+            color: var(--color-primary-light);
+        }
+
+        .section-accent p {
+            color: var(--color-neutral-100);
+        }
+
+        .section-accent strong {
+            color: var(--color-neutral-50);
+        }
+
+        .section-accent .highlight-yellow {
+            color: #FFD700 !important;
+            font-weight: bold;
+        }
+
+        .section-accent .card {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .section-accent .card p {
+            color: var(--color-neutral-100);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--space-12);
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--color-neutral-500);
+        }
+
+        .section-dark .section-header p {
+            color: var(--color-neutral-200);
+        }
+
+        /* Two Column Layout */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-12);
+            align-items: start;
+        }
+
+        @media (max-width: 800px) {
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-6);
+            margin-top: var(--space-12);
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: var(--space-6);
+            background: var(--color-accent-dark);
+            border-radius: 8px;
+            border: 1px solid var(--color-accent-light);
+        }
+
+        .stat-number {
+            font-family: var(--font-primary);
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--color-neutral-300);
+            margin-top: var(--space-2);
+        }
+
+        @media (max-width: 800px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--space-8) 0;
+            font-size: 0.95rem;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: var(--space-4);
+            text-align: left;
+            border-bottom: 1px solid var(--color-neutral-200);
+        }
+
+        .data-table th {
+            font-family: var(--font-primary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-neutral-500);
+            background: var(--color-neutral-100);
+        }
+
+        .data-table td {
+            color: var(--color-neutral-700);
+        }
+
+        .section-dark .data-table th {
+            background: var(--color-accent-dark);
+            color: var(--color-neutral-400);
+            border-bottom-color: var(--color-accent-light);
+        }
+
+        .section-dark .data-table td {
+            color: var(--color-neutral-200);
+            border-bottom-color: var(--color-accent-light);
+        }
+
+        /* Cards */
+        .card {
+            background: var(--color-neutral-50);
+            border: 2px solid var(--color-neutral-200);
+            border-radius: 8px;
+            padding: var(--space-8);
+            margin-bottom: var(--space-6);
+        }
+
+        .card:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-dark .card {
+            background: var(--color-accent-dark);
+            border-color: var(--color-accent-light);
+        }
+
+        /* Feature List */
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: var(--space-4) 0;
+            border-bottom: 1px solid var(--color-neutral-200);
+            padding-left: var(--space-8);
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-weight: bold;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .section-dark .feature-list li {
+            border-bottom-color: var(--color-accent-light);
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: var(--color-primary-100);
+            border-left: 4px solid var(--color-primary);
+            padding: var(--space-6);
+            margin: var(--space-8) 0;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .section-dark .highlight-box {
+            background: rgba(184, 134, 11, 0.15);
+            border-left-color: var(--color-primary);
+        }
+
+        .section-dark .highlight-box p {
+            color: var(--color-neutral-50);
+        }
+
+        .section-dark .highlight-box strong {
+            color: var(--color-primary);
+        }
+
+        /* Phase Timeline */
+        .phase-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-6);
+        }
+
+        .phase-card {
+            background: var(--color-neutral-50);
+            border: 2px solid var(--color-neutral-200);
+            border-radius: 8px;
+            padding: var(--space-6);
+            position: relative;
+        }
+
+        .phase-number {
+            font-family: var(--font-primary);
+            font-size: 3rem;
+            color: var(--color-primary-200);
+            position: absolute;
+            top: var(--space-4);
+            right: var(--space-4);
+            line-height: 1;
+        }
+
+        .phase-card h3 {
+            margin-bottom: var(--space-2);
+        }
+
+        .phase-year {
+            font-size: 0.85rem;
+            color: var(--color-neutral-400);
+            margin-bottom: var(--space-4);
+        }
+
+        @media (max-width: 800px) {
+            .phase-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Ask Section */
+        .ask-card {
+            background: var(--color-neutral-50);
+            border: 3px solid var(--color-primary);
+            border-radius: 8px;
+            padding: var(--space-8);
+            margin-bottom: var(--space-8);
+        }
+
+        .ask-card h3 {
+            font-size: 1.75rem;
+            margin-bottom: var(--space-2);
+        }
+
+        .ask-subtitle {
+            font-family: var(--font-accent);
+            font-style: italic;
+            color: var(--color-accent);
+            font-size: 1.1rem;
+            margin-bottom: var(--space-6);
+        }
+
+        .ask-quote {
+            font-family: var(--font-accent);
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--color-neutral-600);
+            padding: var(--space-4);
+            border-left: 3px solid var(--color-primary);
+            margin: var(--space-6) 0;
+        }
+
+        .brings-list {
+            margin: var(--space-6) 0;
+        }
+
+        .brings-list h4 {
+            font-family: var(--font-primary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-neutral-500);
+            margin-bottom: var(--space-3);
+        }
+
+        .brings-list ul {
+            list-style: none;
+        }
+
+        .brings-list li {
+            padding: var(--space-2) 0;
+            padding-left: var(--space-6);
+            position: relative;
+        }
+
+        .brings-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+        }
+
+        .ask-cta {
+            font-family: var(--font-primary);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-secondary);
+            margin-top: var(--space-6);
+        }
+
+        /* Letter Module */
+        .letter-module {
+            background: linear-gradient(135deg, var(--color-neutral-50) 0%, var(--color-neutral-100) 100%);
+            border: 2px solid var(--color-primary);
+            border-radius: 8px;
+            padding: var(--space-12) var(--space-8);
+            margin-top: var(--space-12);
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .letter-module::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            bottom: -1px;
+            background: linear-gradient(45deg, var(--color-primary), var(--color-secondary), var(--color-primary));
+            border-radius: 8px;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .letter-greeting {
+            font-family: var(--font-accent);
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--color-accent);
+            margin-bottom: var(--space-6);
+        }
+
+        .letter-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--color-neutral-700);
+        }
+
+        .letter-content strong {
+            color: var(--color-primary);
+        }
+
+        .letter-signature {
+            margin-top: var(--space-8);
+            font-family: var(--font-accent);
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--color-accent);
+        }
+
+        .letter-contact {
+            margin-top: var(--space-2);
+            font-size: 1rem;
+            color: var(--color-neutral-600);
+        }
+
+        .letter-contact a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .letter-contact a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .letter-module {
+                padding: var(--space-8) var(--space-6);
+                margin-top: var(--space-8);
+            }
+            .letter-greeting {
+                font-size: 1.3rem;
+            }
+            .letter-content {
+                font-size: 1rem;
+            }
+        }
+
+        /* CTA Section */
+        .cta {
+            background: var(--color-secondary);
+            text-align: center;
+            position: relative;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 40px,
+                rgba(0,0,0,0.03) 40px,
+                rgba(0,0,0,0.03) 80px
+            );
+        }
+
+        .cta-content {
+            position: relative;
+        }
+
+        .cta h2 {
+            color: var(--color-neutral-50);
+        }
+
+        .cta p {
+            color: var(--color-neutral-100);
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto var(--space-8);
+        }
+
+        .cta-investment {
+            font-family: var(--font-primary);
+            font-size: 2rem;
+            color: var(--color-neutral-50);
+            margin-bottom: var(--space-2);
+        }
+
+        .cta-terms {
+            color: var(--color-neutral-200);
+            font-size: 0.95rem;
+            margin-bottom: var(--space-8);
+        }
+
+        .btn {
+            display: inline-block;
+            font-family: var(--font-primary);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: var(--space-4) var(--space-8);
+            border: 3px solid transparent;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-light {
+            background: var(--color-neutral-50);
+            color: var(--color-secondary);
+            border-color: var(--color-neutral-50);
+        }
+
+        .btn-light:hover {
+            background: var(--color-primary);
+            color: var(--color-neutral-50);
+            border-color: var(--color-primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-neutral-800);
+            color: var(--color-neutral-400);
+            padding: var(--space-12) 0;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-primary);
+            font-size: 1.25rem;
+            color: var(--color-primary);
+            margin-bottom: var(--space-4);
+        }
+
+        .footer-tagline {
+            font-family: var(--font-accent);
+            font-style: italic;
+            color: var(--color-neutral-500);
+            margin-bottom: var(--space-6);
+        }
+
+        .footer-copyright {
+            font-size: 0.85rem;
+            color: var(--color-neutral-500);
+        }
+
+        .footer-contact {
+            margin: var(--space-4) 0;
+            font-size: 1.1rem;
+        }
+
+        .footer-contact a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer-contact a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-contact small {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--color-neutral-400);
+            margin-top: var(--space-1);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-inner">
+                <a href="#" class="logo">GPWCo</a>
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="#story">The Story</a></li>
+                    <li><a href="#blueprint">The Blueprint</a></li>
+                    <li><a href="#model">Why It Wins</a></li>
+                    <li><a href="#team">Our Team</a></li>
+                    <li><a href="#market">The Market</a></li>
+                    <li><a href="#vision">The Vision</a></li>
+                    <li><a href="#philosophy">Philosophy</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: HERO — THE PRODUCT -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <p class="hero-tagline">Tapped here • Canned here • For here</p>
+                    <h1>Greater Philadelphia Water Company</h1>
+                    <p class="hero-subtitle">It's not just water. It's our water.</p>
+                    <p class="hero-description">
+                        Sourced from springs within 100 miles of the city. Canned in aluminum right here in the region.
+                    </p>
+                </div>
+                <div class="hero-image">
+                    <img src="image-product-shot-gpwco.jpg" alt="Greater Philadelphia Water Company can">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Letter Module -->
+    <section style="padding: 0;">
+        <div class="container">
+            <div class="letter-module" style="margin-top: var(--space-8); margin-bottom: var(--space-8);">
+                <div class="letter-greeting">Tom & Todd,</div>
+
+                <div class="letter-content">
+                    <p>I'm Drew Garraway—a project leader with deep experience across operations, product management, marketing, and software. I've built systems, led teams, and delivered products that matter.</p>
+
+                    <p>You bring decades of expertise in building, scaling, and understanding what it takes to win in Philadelphia and beyond. With your guidance (and potentially capital)—I'll be the boots on the ground, leading the team to build GPWCo from the ground up.</p>
+
+                    <p>This isn't just another beverage company. It's proving that profitable businesses can benefit the environment through hyperlocal production, create wealth for all employees, and strengthen community identity. Philadelphia deserves a water company built by Philadelphians, for Philadelphians.</p>
+
+                    <p>Together, we set the template for what regional pride water products can be nationwide.</p>
+                </div>
+
+                <div class="letter-signature">
+                    — Drew Garraway
+                    <div class="letter-contact">
+                        <a href="tel:310-739-4396">310-739-4396</a><br>
+                        <small>text/call anytime</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: THE PHILADELPHIA STORY -->
+    <section class="section-dark" id="story">
+        <div class="container">
+            <h2>Why Philadelphia Spring Water?</h2>
+
+            <div class="two-col">
+                <div>
+                    <p><strong class="highlight-yellow">Philadelphians love Philadelphia more than any other city hates us.</strong> And that loyalty translates to what we buy.</p>
+
+                    <p>Hell. We even say "water" differently than everyone. It's "wooder" here, and we're proud of it.</p>
+
+                    <p>Philadelphia consumers show <strong class="highlight-yellow">31% higher brand affinity</strong> for local products vs. national brands. We support our own—from Wawa to Yuengling to the Eagles. It's not just preference; it's identity.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Brand loyalty to the region is our competitive moat.</strong></p>
+                    </div>
+
+                    <p>We source from Greater Philadelphia. Canned here. Sold here. That resonates with Philadelphians in a way Dasani never will.</p>
+                </div>
+                <div>
+                    <p><strong class="highlight-yellow">42% of Philadelphia residents already use bottled water.</strong> The March 2023 Delaware River chemical spill accelerated this shift. Water trust issues are real, but they're not why we'll win.</p>
+
+                    <p>We'll win because Philadelphia wants Philadelphia water. Not Colorado mountain water. Not filtered municipal piped through who-knows-what. <strong class="highlight-yellow">Our water.</strong></p>
+
+                    <p>We're not competing with corporate water. We're building a brand that belongs here.</p>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">42%</div>
+                    <div class="stat-label">Use bottled water</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">31%</div>
+                    <div class="stat-label">Higher local brand affinity</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">100</div>
+                    <div class="stat-label">Miles max from source</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label">Regional Wawa locations</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: THE BIGGER IDEA — THIS IS REPLICABLE -->
+    <section class="section-alt" id="blueprint">
+        <div class="container">
+            <div class="section-header">
+                <h2>GPWCo Is a Blueprint, Not Just a Brand</h2>
+                <p>Other cities and states have pride like Philly. We can replicate this model where it makes sense. But we won't force it—that would waste time, energy, and capital on markets that don't care. We only build where the pride is real.</p>
+            </div>
+
+            <p style="text-align: center; margin-bottom: var(--space-8);">Same operational model. Different emotional wrapper. Each brand rooted in local colloquialisms, local identity, local pride.</p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Brand Concept</th>
+                        <th>Market</th>
+                        <th>Local Hook</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>GPWCo</strong></td>
+                        <td>Philadelphia, PA</td>
+                        <td>"Wooder" culture, revolutionary heritage</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mountain Water</strong></td>
+                        <td>Morgantown, WV</td>
+                        <td>Appalachian pride</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bubblr</strong></td>
+                        <td>Milwaukee, WI</td>
+                        <td>Wisconsin's word for drinking fountain</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p style="text-align: center; font-size: 1.1rem; color: var(--color-primary);"><strong>...you get the point.</strong></p>
+        </div>
+    </section>
+
+    <!-- SECTION 4: WHY THIS MODEL WINS -->
+    <section class="section-accent" id="model">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why This Model Wins</h2>
+            </div>
+
+            <div class="two-col">
+                <div>
+                    <div class="card">
+                        <h3>Low Carbon Footprint</h3>
+                        <p>Hyperlocal production = minimal shipping/waste/costs. No water trucked across the country or across the seas, stolen from disadvantaged areas (fuck you, Nestle).</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>High Brand Value</h3>
+                        <p>Local pride creates pricing power national brands can't touch. Regional identity = defensible moat.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Aluminum > Plastic</h3>
+                        <p>68% recycling rate for aluminum vs. 27% for plastic. Premium perception built into the packaging.</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="card">
+                        <h3>Philadelphia Tax Advantage</h3>
+                        <p>Pure water is exempt from Philadelphia's 1.5¢/oz beverage tax. Sweetened beverages saw 50% sales decline post-tax. We're on the right side of that shift.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Craft Beer Playbook</h3>
+                        <p>Yuengling. Shiner. Narragansett. They won on regional pride, not national distribution. Same playbook applies to water.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Liquid Death Proved the Market</h3>
+                        <p>$263 million revenue in 2024. $1.4 billion valuation. First cans launched in Philadelphia, January 2019.</p>
+                        <p><strong>They own "attitude." We own "place."</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: OUR TEAM -->
+    <section class="section-alt" id="team">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Team</h2>
+                <p>The people and approach to execute this vision.</p>
+            </div>
+
+            <div class="two-col">
+                <div>
+                    <ul class="feature-list">
+                        <li><strong>Same design crew that launched Beyond Meat to successful IPO.</strong> They know how to build challenger brands that disrupt established markets.</li>
+                        <li><strong>Expert brand marketers and can designers</strong> who understand that packaging is the product in retail.</li>
+                        <li><strong>Experienced project manager</strong> to build the product from 0 to 1 while keeping a team aligned and engaged.</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="feature-list">
+                        <li><strong>Fiscally conservative team</strong> that can handle funds effectively and work nimbly.</li>
+                        <li><strong>Using a city's resources, rich history, and character</strong> to build a product that genuinely resonates.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: THE MARKET OPPORTUNITY -->
+    <section class="section-dark" id="market">
+        <div class="container">
+            <div class="section-header">
+                <h2>The Market Opportunity</h2>
+            </div>
+
+            <div class="two-col">
+                <div>
+                    <h3>Regional Market</h3>
+                    <p><em>Greater Philadelphia + Baltimore + DC + Delaware</em></p>
+
+                    <ul class="feature-list">
+                        <li><strong>$1.96-2.45 billion</strong> total bottled water market</li>
+                        <li><strong>$294-490 million</strong> premium segment opportunity</li>
+                        <li><strong>9.8 million consumers</strong></li>
+                    </ul>
+
+                    <p style="margin-top: var(--space-6);"><strong>Premium segment growing 18% annually.</strong></p>
+                </div>
+                <div>
+                    <h3>Target Customer</h3>
+                    <p>25-45, urban/suburban, values local + sustainability. They're buying Poland Spring and Deer Park because there's no authentic local option.</p>
+                    <p><strong>We're that option.</strong></p>
+
+                    <div class="highlight-box">
+                        <p><strong>Primary Retail Target:</strong> Wawa's 1,000+ regional locations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: THE VISION — BUILD RIGHT, THEN SCALE -->
+    <section class="section-alt" id="vision">
+        <div class="container">
+            <div class="section-header">
+                <h2>Build Right, Then Scale</h2>
+            </div>
+
+            <div class="phase-grid">
+                <div class="phase-card">
+                    <div class="phase-number">1</div>
+                    <h3>Perfect Philadelphia</h3>
+                    <p class="phase-year">Year 1</p>
+                    <p>Dial in everything. Prove unit economics. Indie retail, delis, comedy clubs, music venues. Wawa pilot.</p>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-number">2</div>
+                    <h3>Prove Replicability</h3>
+                    <p class="phase-year">Year 2</p>
+                    <p>Launch 2-3 pilot markets with localized branding. Test the playbook beyond Philadelphia.</p>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-number">3</div>
+                    <h3>Strategic Expansion</h3>
+                    <p class="phase-year">Year 3+</p>
+                    <p>10-20 markets. Sustainable growth. Never over-extend. Each market must stand on its own economics.</p>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: var(--space-12); font-size: 1.1rem;"><strong>Long-term:</strong> Platform for hyper-local premium water. Own the category through authenticity.</p>
+        </div>
+    </section>
+
+    <!-- SECTION 7: THE FINANCIAL PHILOSOPHY -->
+    <section class="section-accent" id="philosophy">
+        <div class="container">
+            <div class="section-header">
+                <h2>Build to Last, Not to Flip</h2>
+                <p class="highlight-yellow">Build this company to provide for the community, owners, and employees. Not for flipping. Dividends that last generations, just like our water supply.</p>
+            </div>
+
+            <div class="two-col">
+                <div>
+                    <h3>Employee Ownership</h3>
+                    <p>Jack Bogle built Vanguard for all their employees. We're building GPWCo the same way. Ownership from day one. Wealth shared with the people who build it.</p>
+                </div>
+                <div>
+                    <h3>Operational Excellence → Dividends</h3>
+                    <p>Profitability first. Returns via recurring dividends, not just exit events.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Greater Philadelphia Water Company</div>
+            <p class="footer-tagline">Tapped here. Canned here. For here.</p>
+            <div class="footer-contact">
+                Drew Garraway<br>
+                <a href="tel:310-739-4396">310-739-4396</a>
+                <small>text/call anytime</small>
+            </div>
+            <p class="footer-copyright">© 2025 Greater Philadelphia Water Company. Philadelphia, PA.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile nav
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        navToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
+        });
+
+        // Nav scroll
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+    </script>
+</body>
+</html>
