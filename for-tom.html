@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5, user-scalable=yes, viewport-fit=cover">
-    <title>Greater Philadelphia Water Company | Investor Overview</title>
+    <title>Greater Philadelphia Water Company | For Tom</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Text:ital@0;1&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%23B8860B' stroke-width='8'/%3E%3Ctext x='50' y='60' text-anchor='middle' font-family='Arial' font-size='40' fill='%23B8860B' font-weight='bold'%3EGP%3C/text%3E%3C/svg%3E">
     <style>
         :root {
             /* Primary Colors */
@@ -80,6 +81,33 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
+        /* Enhanced Mobile Typography */
+        @media (max-width: 768px) {
+            body {
+                font-size: 20px;
+                line-height: 1.8;
+            }
+            h1 {
+                font-size: clamp(2.5rem, 10vw, 4rem);
+            }
+            h2 {
+                font-size: clamp(2rem, 6vw, 3rem);
+            }
+            h3 {
+                font-size: clamp(1.5rem, 4vw, 2rem);
+            }
+            p {
+                font-size: 1.1rem;
+                line-height: 1.8;
+            }
+            .section-header p {
+                font-size: 1.2rem;
+            }
+            .highlight-yellow {
+                font-size: 1.15rem;
+            }
+        }
+
         /* Improve touch targets for mobile */
         @media (max-width: 768px) {
             a, button {
@@ -139,8 +167,20 @@
             padding: 0 var(--space-6);
         }
 
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 var(--space-4);
+            }
+        }
+
         section {
             padding: var(--space-20) 0;
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: var(--space-12) 0;
+            }
         }
 
         /* Navigation */
@@ -245,7 +285,7 @@
                 box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             }
             .nav-links a {
-                padding: var(--space-3) 0;
+                padding: var(--space-4) var(--space-3);
                 display: block;
             }
             .nav-links.active {
@@ -346,14 +386,69 @@
             }
         }
 
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: var(--space-8);
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            animation: bounce 2s infinite;
+            display: none;
+        }
+
+        .scroll-text {
+            font-family: var(--font-primary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-primary);
+            margin-bottom: var(--space-2);
+        }
+
+        .scroll-arrow {
+            width: 30px;
+            height: 30px;
+            margin: 0 auto;
+            transform: rotate(45deg);
+            border-right: 3px solid var(--color-primary);
+            border-bottom: 3px solid var(--color-primary);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
         @media (max-width: 480px) {
             .hero {
                 padding-top: 80px;
-                min-height: auto;
-                padding-bottom: var(--space-8);
+                min-height: 100vh;
+                padding-bottom: var(--space-4);
+                position: relative;
+            }
+            .hero-content {
+                min-height: calc(100vh - 100px);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .hero-image {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                margin-bottom: 0;
             }
             .hero-image img {
-                max-height: 250px;
+                max-height: 60vh;
+                width: auto;
+                max-width: 100%;
+            }
+            .hero-text {
+                display: none;
+            }
+            .scroll-indicator {
+                display: block;
             }
             .hero h1 {
                 font-size: 2.5rem;
@@ -379,8 +474,9 @@
         }
 
         .section-dark .highlight-yellow {
-            color: #FFD700 !important;
+            color: #FFC700 !important;  /* Improved contrast */
             font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3); /* Better readability */
         }
 
         .section-dark h2 {
@@ -436,8 +532,9 @@
         }
 
         .section-accent .highlight-yellow {
-            color: #FFD700 !important;
+            color: #FFC700 !important;  /* Improved contrast */
             font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3); /* Better readability */
         }
 
         .section-accent .card {
@@ -816,6 +913,28 @@
             }
         }
 
+        /* Responsive Table Styles */
+        @media (max-width: 768px) {
+            .data-table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+                margin-left: calc(-1 * var(--space-4));
+                margin-right: calc(-1 * var(--space-4));
+                padding: 0 var(--space-4);
+            }
+            .data-table::after {
+                content: '← Swipe to see more →';
+                display: block;
+                text-align: center;
+                font-size: 0.85rem;
+                color: var(--color-neutral-500);
+                padding: var(--space-2) 0;
+                font-style: italic;
+            }
+        }
+
         /* CTA Section */
         .cta {
             background: var(--color-secondary);
@@ -892,6 +1011,92 @@
             border-color: var(--color-primary);
         }
 
+        /* Thank You Module */
+        .thank-you-module {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            padding: var(--space-20) 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .thank-you-module::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 60px,
+                rgba(255,255,255,0.05) 60px,
+                rgba(255,255,255,0.05) 120px
+            );
+            pointer-events: none;
+        }
+
+        .thank-you-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .thank-you-module h2 {
+            font-family: var(--font-primary);
+            font-size: 3rem;
+            color: var(--color-neutral-50);
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            margin-bottom: var(--space-4);
+        }
+
+        .thank-you-module p {
+            font-size: 1.3rem;
+            color: var(--color-neutral-50);
+            margin-bottom: var(--space-4);
+        }
+
+        .thank-you-contact {
+            font-size: 1.5rem !important;
+            font-weight: bold;
+            margin: var(--space-6) 0 !important;
+        }
+
+        .thank-you-contact a {
+            color: var(--color-neutral-50);
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+        }
+
+        .thank-you-contact a:hover {
+            color: var(--color-accent);
+        }
+
+        .thank-you-signature {
+            font-family: var(--font-accent);
+            font-style: italic;
+            font-size: 1.4rem !important;
+            margin-top: var(--space-8) !important;
+        }
+
+        @media (max-width: 768px) {
+            .thank-you-module {
+                padding: var(--space-12) 0;
+            }
+            .thank-you-module h2 {
+                font-size: clamp(2rem, 8vw, 3rem);
+            }
+            .thank-you-module p {
+                font-size: 1.1rem;
+            }
+            .thank-you-contact {
+                font-size: 1.3rem !important;
+            }
+            .thank-you-signature {
+                font-size: 1.2rem !important;
+            }
+        }
+
         /* Footer */
         footer {
             background: var(--color-neutral-800);
@@ -919,28 +1124,6 @@
             color: var(--color-neutral-500);
         }
 
-        .footer-contact {
-            margin: var(--space-4) 0;
-            font-size: 1.1rem;
-        }
-
-        .footer-contact a {
-            color: var(--color-primary);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .footer-contact a:hover {
-            text-decoration: underline;
-        }
-
-        .footer-contact small {
-            display: block;
-            font-size: 0.9rem;
-            color: var(--color-neutral-400);
-            margin-top: var(--space-1);
-        }
-
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -960,19 +1143,22 @@
         }
     </style>
 </head>
-<body>
+<body id="top">
+    <!-- Skip Navigation for Accessibility -->
+    <a href="#main-content" style="position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; z-index: 999999;">Skip to main content</a>
+
     <!-- Navigation -->
     <nav>
         <div class="container">
             <div class="nav-inner">
-                <a href="#" class="logo">GPWCo</a>
+                <a href="#top" class="logo" aria-label="GPWCo - Go to top">GPWCo</a>
                 <button class="nav-toggle" aria-label="Toggle navigation">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
                 <ul class="nav-links">
-                    <li><a href="#story">The Story</a></li>
+                    <li><a href="#story">The Idea</a></li>
                     <li><a href="#blueprint">The Blueprint</a></li>
                     <li><a href="#model">Why It Wins</a></li>
                     <li><a href="#team">Our Team</a></li>
@@ -985,7 +1171,7 @@
     </nav>
 
     <!-- SECTION 1: HERO — THE PRODUCT -->
-    <section class="hero">
+    <section class="hero" id="main-content">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
@@ -997,8 +1183,14 @@
                     </p>
                 </div>
                 <div class="hero-image">
-                    <img src="image-product-shot-gpwco.jpg" alt="Greater Philadelphia Water Company can">
+                    <img src="image-product-shot-gpwco.jpg"
+                         alt="Greater Philadelphia Water Company can"
+                         onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjUwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2Y3ZjVmMyIvPgogIDxjaXJjbGUgY3g9IjIwMCIgY3k9IjI1MCIgcj0iMTUwIiBmaWxsPSJub25lIiBzdHJva2U9IiNCODg2MEIiIHN0cm9rZS13aWR0aD0iMyIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMjQwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iNDgiIGZpbGw9IiNCODg2MEIiIGZvbnQtd2VpZ2h0PSJib2xkIj5HUFdDbzwvdGV4dD4KICA8dGV4dCB4PSIyMDAiIHk9IjI3MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4IiBmaWxsPSIjNjI1YTUyIj5TcHJpbmcgV2F0ZXI8L3RleHQ+Cjwvc3ZnPg=='; this.style.opacity='0.8';">
                 </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="scroll-text">Scroll for more</div>
+                <div class="scroll-arrow"></div>
             </div>
         </div>
     </section>
@@ -1012,7 +1204,7 @@
                 <div class="letter-content">
                     <p>I'm Drew Garraway—a project leader with deep experience across operations, product management, marketing, and software. I've built systems, led teams, and delivered products that matter.</p>
 
-                    <p>You bring decades of expertise in building, scaling, and understanding what it takes to win in Philadelphia and beyond. With your guidance (and potentially capital)—I'll be the boots on the ground, leading the team to build GPWCo from the ground up.</p>
+                    <p>You bring decades of expertise in building, scaling, and understanding what it takes to win in Philadelphia and beyond. With your guidance (and potentially capital)... I will be the boots on the ground, leading the team to build GPWCo from the ground up, delivering water to customers...whatever it takes.</p>
 
                     <p>This isn't just another beverage company. It's proving that profitable businesses can benefit the environment through hyperlocal production, create wealth for all employees, and strengthen community identity. Philadelphia deserves a water company built by Philadelphians, for Philadelphians.</p>
 
@@ -1041,7 +1233,7 @@
 
                     <p>Hell. We even say "water" differently than everyone. It's "wooder" here, and we're proud of it.</p>
 
-                    <p>Philadelphia consumers show <strong class="highlight-yellow">31% higher brand affinity</strong> for local products vs. national brands. We support our own—from Wawa to Yuengling to the Eagles. It's not just preference; it's identity.</p>
+                    <p>Philadelphia consumers show <strong class="highlight-yellow">strong brand affinity</strong> for local products vs. national brands<sup><a href="references.html#ref3" style="color: var(--color-primary); text-decoration: none;">[3]</a></sup>. We support our own—from Wawa to Yuengling to the Eagles. It's not just preference; it's identity.</p>
 
                     <div class="highlight-box">
                         <p><strong>Brand loyalty to the region is our competitive moat.</strong></p>
@@ -1050,9 +1242,9 @@
                     <p>We source from Greater Philadelphia. Canned here. Sold here. That resonates with Philadelphians in a way Dasani never will.</p>
                 </div>
                 <div>
-                    <p><strong class="highlight-yellow">42% of Philadelphia residents already use bottled water.</strong> The March 2023 Delaware River chemical spill accelerated this shift. Water trust issues are real, but they're not why we'll win.</p>
+                    <p><strong class="highlight-yellow">42% of Philadelphia residents already use bottled water</strong><sup><a href="references.html#ref1" style="color: var(--color-primary); text-decoration: none;">[1]</a></sup>. The March 2023 Delaware River chemical spill<sup><a href="references.html#ref2" style="color: var(--color-primary); text-decoration: none;">[2]</a></sup> accelerated this shift. Water trust issues are real, but they're not why we'll win.</p>
 
-                    <p>We'll win because Philadelphia wants Philadelphia water. Not Colorado mountain water. Not filtered municipal piped through who-knows-what. <strong class="highlight-yellow">Our water.</strong></p>
+                    <p><span class="highlight-yellow">We'll win because Philadelphia wants Philadelphia water.</span> Not Colorado mountain water. Not filtered municipal piped through who-knows-what. <strong class="highlight-yellow">Our water.</strong></p>
 
                     <p>We're not competing with corporate water. We're building a brand that belongs here.</p>
                 </div>
@@ -1061,11 +1253,11 @@
             <div class="stats-grid">
                 <div class="stat-box">
                     <div class="stat-number">42%</div>
-                    <div class="stat-label">Use bottled water</div>
+                    <div class="stat-label">Use bottled water<sup><a href="references.html#ref1" style="color: var(--color-primary-light); text-decoration: none; font-size: 0.7em;">[1]</a></sup></div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-number">31%</div>
-                    <div class="stat-label">Higher local brand affinity</div>
+                    <div class="stat-number">72%</div>
+                    <div class="stat-label">Willing to pay more for local<sup><a href="references.html#ref3" style="color: var(--color-primary-light); text-decoration: none; font-size: 0.7em;">[3]</a></sup></div>
                 </div>
                 <div class="stat-box">
                     <div class="stat-number">100</div>
@@ -1141,13 +1333,13 @@
 
                     <div class="card">
                         <h3>Aluminum > Plastic</h3>
-                        <p>68% recycling rate for aluminum vs. 27% for plastic. Premium perception built into the packaging.</p>
+                        <p>43% recycling rate for aluminum vs. 20% for plastic<sup><a href="references.html#ref5" style="color: var(--color-primary-light); text-decoration: none;">[5]</a></sup>. Premium perception built into the packaging. 71% recycled content in cans vs 3-10% in plastic.</p>
                     </div>
                 </div>
                 <div>
                     <div class="card">
                         <h3>Philadelphia Tax Advantage</h3>
-                        <p>Pure water is exempt from Philadelphia's 1.5¢/oz beverage tax. Sweetened beverages saw 50% sales decline post-tax. We're on the right side of that shift.</p>
+                        <p>Pure water is exempt from Philadelphia's 1.5¢/oz beverage tax<sup><a href="references.html#ref6" style="color: var(--color-primary-light); text-decoration: none;">[6]</a></sup>. Sweetened beverages saw 50% sales decline post-tax. We're on the right side of that shift.</p>
                     </div>
 
                     <div class="card">
@@ -1157,7 +1349,7 @@
 
                     <div class="card">
                         <h3>Liquid Death Proved the Market</h3>
-                        <p>$263 million revenue in 2024. $1.4 billion valuation. First cans launched in Philadelphia, January 2019.</p>
+                        <p>$333 million revenue in 2024. $1.4 billion valuation<sup><a href="references.html#ref4" style="color: var(--color-primary-light); text-decoration: none;">[4]</a></sup>. First cans launched in Philadelphia, January 2019.</p>
                         <p><strong>They own "attitude." We own "place."</strong></p>
                     </div>
                 </div>
@@ -1176,8 +1368,7 @@
             <div class="two-col">
                 <div>
                     <ul class="feature-list">
-                        <li><strong>Same design crew that launched Beyond Meat to successful IPO.</strong> They know how to build challenger brands that disrupt established markets.</li>
-                        <li><strong>Expert brand marketers and can designers</strong> who understand that packaging is the product in retail.</li>
+                        <li><strong>Expert brand marketers and product designer</strong> who understand that packaging is the product in retail, including the designer who launched Beyond Meat to successful IPO and knows how to design challenger brands that disrupt established markets.</li>
                         <li><strong>Experienced project manager</strong> to build the product from 0 to 1 while keeping a team aligned and engaged.</li>
                     </ul>
                 </div>
@@ -1204,7 +1395,7 @@
                     <p><em>Greater Philadelphia + Baltimore + DC + Delaware</em></p>
 
                     <ul class="feature-list">
-                        <li><strong>$1.96-2.45 billion</strong> total bottled water market</li>
+                        <li><strong>$1.96-2.45 billion</strong> total bottled water market<sup><a href="references.html#ref8" style="color: var(--color-primary-light); text-decoration: none;">[8]</a></sup></li>
                         <li><strong>$294-490 million</strong> premium segment opportunity</li>
                         <li><strong>9.8 million consumers</strong></li>
                     </ul>
@@ -1260,7 +1451,7 @@
     <section class="section-accent" id="philosophy">
         <div class="container">
             <div class="section-header">
-                <h2>Build to Last, Not to Flip</h2>
+                <h2>Build to Last and Grow</h2>
                 <p class="highlight-yellow">Build this company to provide for the community, owners, and employees. Not for flipping. Dividends that last generations, just like our water supply.</p>
             </div>
 
@@ -1277,34 +1468,84 @@
         </div>
     </section>
 
+    <!-- Thank You Module -->
+    <section class="thank-you-module">
+        <div class="container">
+            <div class="thank-you-content">
+                <h2>Thank You for Your Time</h2>
+                <p class="thank-you-contact">
+                    Call/text me <a href="tel:310-739-4396">310-739-4396</a>
+                </p>
+                <p>Please do not hesitate to connect.</p>
+                <p class="thank-you-signature">Sincerely,<br>Drew Garraway</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-logo">Greater Philadelphia Water Company</div>
             <p class="footer-tagline">Tapped here. Canned here. For here.</p>
-            <div class="footer-contact">
-                Drew Garraway<br>
-                <a href="tel:310-739-4396">310-739-4396</a>
-                <small>text/call anytime</small>
-            </div>
+            <p style="margin: var(--space-4) 0;">
+                <a href="references.html" style="color: var(--color-primary); text-decoration: underline;">View All Sources & References</a>
+            </p>
             <p class="footer-copyright">© 2025 Greater Philadelphia Water Company. Philadelphia, PA.</p>
         </div>
     </footer>
 
     <script>
-        // Mobile nav
+        // Mobile nav with error handling
         const navToggle = document.querySelector('.nav-toggle');
         const navLinks = document.querySelector('.nav-links');
-        navToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => navLinks.classList.remove('active'));
+
+        if (navToggle && navLinks) {
+            navToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => navLinks.classList.remove('active'));
+            });
+        }
+
+        // Nav scroll effect with error handling
+        const nav = document.querySelector('nav');
+        const scrollIndicator = document.querySelector('.scroll-indicator');
+        let scrollIndicatorHidden = false;
+
+        if (nav) {
+            window.addEventListener('scroll', () => {
+                nav.classList.toggle('scrolled', window.scrollY > 50);
+
+                // Hide scroll indicator after user starts scrolling (only on mobile)
+                if (scrollIndicator && !scrollIndicatorHidden && window.scrollY > 100) {
+                    scrollIndicator.style.opacity = '0';
+                    scrollIndicator.style.pointerEvents = 'none';
+                    scrollIndicatorHidden = true;
+                }
+            });
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return; // Skip if just '#'
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    if (navLinks) navLinks.classList.remove('active');
+                }
+            });
         });
 
-        // Nav scroll
-        const nav = document.querySelector('nav');
-        window.addEventListener('scroll', () => {
-            nav.classList.toggle('scrolled', window.scrollY > 50);
-        });
+        /* Performance Note: Consider moving all CSS to external stylesheet
+           for better caching and faster initial page load. The 1100+ lines
+           of inline CSS blocks rendering. */
     </script>
 </body>
 </html>
