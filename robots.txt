@@ -1,4 +1,19 @@
+# Greater Philadelphia Water Co. Robots.txt
+# Updated: December 2024
+
+# Default - Block all bots from private/development folders
 User-agent: *
+Disallow: /lets-talk/
+Disallow: /budget-estimate/
+Disallow: /localsonly/
+Disallow: /opportunity/
+Disallow: /costofcans/
+Disallow: /fibi/
+Disallow: /.vscode/
+Disallow: /.claude/
+Disallow: /.git/
+
+# Block old/unused pages
 Disallow: /our-water
 Disallow: /find-local
 Disallow: /about
@@ -8,10 +23,50 @@ Disallow: /contact
 Disallow: /faq
 Disallow: /neighborhoods
 Disallow: /wholesale
+Disallow: /bob
+Disallow: /for-tom
+
+# Allow major search engines to index the homepage only
+User-agent: Googlebot
+Allow: /$
+Disallow: /lets-talk/
 Disallow: /budget-estimate/
 Disallow: /localsonly/
 Disallow: /opportunity/
 Disallow: /costofcans/
 Disallow: /fibi/
-Disallow: /bob
 
+User-agent: Bingbot
+Allow: /$
+Disallow: /lets-talk/
+Disallow: /budget-estimate/
+Disallow: /localsonly/
+Disallow: /opportunity/
+Disallow: /costofcans/
+Disallow: /fibi/
+
+# Block AI/ML training bots
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+# Block archiving bots
+User-agent: ia_archiver
+Disallow: /
+
+User-agent: Wayback Machine
+Disallow: /
+
+# Sitemap (when you have one)
+# Sitemap: https://greaterphiladelphiawaterco.com/sitemap.xml
